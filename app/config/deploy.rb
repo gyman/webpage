@@ -11,7 +11,8 @@ set :ssh_options, {
 
 set :use_composer, true
 set :composer_options,  "--no-dev --verbose --prefer-dist --optimize-autoloader"
-set :update_vendors, true
+set :update_vendors, false
+set :vendors_mode, "install"
 
 set :shared_files,      ["app/config/parameters.yml"]
 set :shared_children,     [app_path + "/logs", web_path + "/uploads", "vendor"]
