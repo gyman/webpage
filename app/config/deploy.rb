@@ -14,6 +14,8 @@ set :composer_options,  "--no-dev --verbose --prefer-dist --optimize-autoloader"
 set :update_vendors, true
 
 set :shared_files,      ["app/config/parameters.yml"]
+set :shared_children,     [app_path + "/logs", web_path + "/uploads", "vendor"]
+
 set :php_bin,           "/usr/local/php5.4/bin/php"
 
 set :repository,  "https://github.com/uirapuru/gyman.pl.git"
