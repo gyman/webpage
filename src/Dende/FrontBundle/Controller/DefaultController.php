@@ -19,4 +19,16 @@ class DefaultController extends Controller
     {
         return array();
     }
+    /**
+     * @Route("/error",name="frontpage_error")
+     * @Template()
+     */
+    public function errorAction()
+    {
+        if(1==1) {
+            throw new \Exception("some error");
+        }
+        
+        return array();
+    }
 }

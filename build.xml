@@ -5,6 +5,7 @@
       <exec command="cap deploy" checkreturn="true" />
       <exec command="cap symfony:assets:install" checkreturn="true" />
       <exec command="cap symfony:assetic:dump" checkreturn="true" />
+      <exec command="cap symfony:cache:clear --env=prod" checkreturn="true" />
    </target>
 
    <target name="prepare">
