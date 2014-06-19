@@ -1,0 +1,88 @@
+{% extends "FrontBundle::layout.html.twig" %}
+
+{% block main %}
+    <section id="main">
+        <article class="content">
+            <header class="page-header">
+                <div class="container">
+                    <h1 class="title">Napisz do nas</h1>
+                </div>	
+            </header>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 contact-info bottom-padding">
+                        <p>
+                            Skorzystaj z formularza po prawej i napisz do nas wiadomość.                            
+                        </p>
+                    </div>
+                    <div class="col-sm-6 col-md-6 bottom-padding login-register">
+                        {{ form_start(form, {
+                            'method' : 'POST',
+                            'attr' : {
+                                "class" : "form-box register-form contact-form",
+                                "id"    : "contactForm",
+                                "novalidate" : true
+                            }
+                        }) }}
+                        
+                            <h3 class="title">Napisz wiadomość</h3>
+                                
+                            {% set notice = app.session.flashbag.get('notice') %}
+                            
+                            {% if notice|length %}
+                            <div class="alert alert-success fade in ">
+                                <i class="fa fa-exclamation-circle alert-icon"></i>
+                                <button data-dismiss="alert" class="close" type="button">×</button>
+                                {% for flashMessage in notice %}
+                                    <p>{{ flashMessage }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            
+                            {% if form.vars.errors|length %}
+                            <div class="alert alert-danger fade in ">
+                                <i class="fa fa-envelope alert-icon"></i>
+                                <button data-dismiss="alert" class="close" type="button">×</button>
+                                <strong>Wystąpiły błędy!</strong>
+                                <ul>
+                                    {% for error in form.vars.errors %}
+                                        <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                                
+                            </div>
+                            {% endif %}
+
+                            {% for field in form|slice(0, 2) %}
+                                <div class="form-group{% if field.vars.errors|length %} has-error{% endif %}">
+                                    <label>{{ form_label(field) }}: <span class="required">*</span></label>
+                                    {{ form_widget(field,{
+                                        "attr" : {"class":"form-control"}
+                                    }) }}
+{#                                    <div class="help-block">
+                                        {% for error in field.vars.errors %}
+                                            {{ error.message }}<br />                                        
+                                        {% endfor %}
+                                    </div>#}
+                                </div>
+                            {% endfor %}
+                            
+                            <div class="clearfix"></div>
+                            
+                            <div class="buttons-box clearfix">
+                                {{ form_widget(form.submit,{
+                                    "attr" : {"class":"btn btn-default"},
+                                    "label" : "Wyślij"
+                                }) }}
+                                <span class="required"><b>*</b> pole wymagane</span>
+                            </div><!-- .buttons-box -->
+                            
+                        {{ form_rest(form) }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section><!-- #main -->
+{% endblock main %}

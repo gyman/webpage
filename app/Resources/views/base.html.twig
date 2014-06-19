@@ -41,21 +41,21 @@
   <![endif]-->
 </head>
 <body class="fixed-header">
-<div class="page-box">
-<div class="page-box-content">
+    <div class="page-box">
+        <div class="page-box-content">
 
-{% include("::header.html.twig") %}
+            {% include("::header.html.twig") %}
 
-{% block main %}
-<section id="main">
-  <article class="content">
-      {% block body %}{% endblock %}
-  </article>
-</section><!-- #main -->
-{% endblock main %}
+            {% block main %}
+            <section id="main">
+              <article class="content">
+                  {% block body %}{% endblock %}
+              </article>
+            </section><!-- #main -->
+            {% endblock main %}
 
-</div><!-- .page-box-content -->
-</div><!-- .page-box -->
+        </div><!-- .page-box-content -->
+    </div><!-- .page-box -->
 
 <footer id="footer">
   <div class="footer-top">
