@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="gyman" default="prepare">
+   <target name="deploy-prod">
+      <exec command="cap deploy" checkreturn="true" />
+      <exec command="cap symfony:assets:install" checkreturn="true" />
+      <exec command="cap symfony:assetic:dump" checkreturn="true" />
+   </target>
+
+   <target name="prepare">
+   </target>
+</project>

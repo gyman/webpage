@@ -1,0 +1,17 @@
+<script>
+    $(function() {
+        Raven.config('http://2612ed484bd84fd9bf05fa1adc8d507a@sentry.uirapu.ru/4', {
+            whitelistUrls: [/gyman\.pl/]
+        }).install();
+
+        // zarejestruj prosty komunikat
+        Raven.captureMessage('hello world!');
+
+        // przechwyć wyjątek
+        try {
+            errorThrowingCode();
+        } catch(err) {
+            Raven.captureException(err);
+        }
+    });
+</script>
