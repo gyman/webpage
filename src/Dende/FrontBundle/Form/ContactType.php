@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\Email;
-use Symfony\Component\Validator\Constraints\Blank;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 
 class ContactType extends AbstractType {
@@ -19,22 +19,30 @@ class ContactType extends AbstractType {
         $builder
                 ->add('email',"email",array(
                     "label" => "Adres email",
+                    "required" => true,
                     "constraints" => array(
                         new Email(array(
                            "message" => "Nieprawidłowy adres email." 
+                        )),
+                        new NotBlank(array(
+                            "message" => "Musisz podać email!"
                         ))
                     ),
                     "error_bubbling" => true
                 ))
                 ->add('message',"textarea",array(
                     "label" => "Wiadomość",
+                    "required" => true,
                     "constraints" => array(
+                        new NotBlank(array(
+                            "message" => "Musisz podać treść wiadomości!"
+                        )),
                         new Length(array(
                             "min" => 10,
                             "minMessage" => "Wiadomość jest zbyt krótka, powinna zawierać conajmniej {{ limit }} znaków",
                             "max" => 1000,
                             "maxMessage" => "Wiadomość jest zbyt długa, powinna zawierać maksymalnie {{ limit }} znaków",
-                        ))
+                        )),
                     ),
                     "error_bubbling" => true
                 ))

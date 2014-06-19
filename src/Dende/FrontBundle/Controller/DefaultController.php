@@ -5,6 +5,7 @@ namespace Dende\FrontBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Dende\FrontBundle\Form\ContactType;
 
@@ -39,6 +40,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/contact",name="frontpage_contact")
+     * @Method({"GET","POST"})
      * @Template()
      */
     public function contactAction(Request $request)
