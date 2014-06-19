@@ -65,10 +65,10 @@ class DefaultController extends Controller
                     ->setTo("some@email.com")
                     ->setFrom($form->get("email")->getData())
                     ->setBody(
-                        $this->renderView("::contactMessage.html.twig",[
+                        $this->renderView("::contactMessage.html.twig",array(
                             "message" => $form->get("message")->getData(),
                             "email" => $form->get("email")->getData()
-                        ]),
+                        )),
                         'text/html'
                     );
                 

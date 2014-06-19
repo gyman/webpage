@@ -19,22 +19,22 @@ class ContactType extends AbstractType {
         $builder
                 ->add('email',"email",array(
                     "label" => "Adres email",
-                    "constraints" => [
-                        new Email([
+                    "constraints" => array(
+                        new Email(array(
                            "message" => "Nieprawidłowy adres email." 
-                        ])
-                    ],
+                        ))
+                    ),
                     "error_bubbling" => true
                 ))
                 ->add('message',"textarea",array(
                     "label" => "Wiadomość",
                     "constraints" => array(
-                        new Length([
+                        new Length(array(
                             "min" => 10,
                             "minMessage" => "Wiadomość jest zbyt krótka, powinna zawierać conajmniej {{ limit }} znaków",
                             "max" => 1000,
                             "maxMessage" => "Wiadomość jest zbyt długa, powinna zawierać maksymalnie {{ limit }} znaków",
-                        ])
+                        ))
                     ),
                     "error_bubbling" => true
                 ))
