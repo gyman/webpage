@@ -12,14 +12,24 @@ imports:
 #        query_cache_driver: apc
 
 monolog:
-    handlers:
-        main:
-            type:         fingers_crossed
-            action_level: error
-            handler:      nested
-        nested:
-            type:  stream
-            path:  "%kernel.logs_dir%/%kernel.environment%.log"
-            level: debug
-        console:
-            type:  console
+  handlers:
+    console:
+        type:  console
+    main:
+        type:         fingers_crossed
+        action_level: notice
+        handler:      grouped_main
+    # Groups
+    grouped_main:
+        type:    group
+        members: [sentry, streamed_main]
+
+    # Streams
+    streamed_main:
+        type:  stream
+        path:  %kernel.logs_dir%/%kernel.environment%.log
+        level: error
+    sentry:
+        type:  raven
+        dsn:   'http://2612ed484bd84fd9bf05fa1adc8d507a:80dc1a4cc75c419989714bd516d66cbe@sentry.uirapu.ru/4'
+        level: notice
