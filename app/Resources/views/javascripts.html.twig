@@ -4,14 +4,6 @@
             whitelistUrls: [/gyman\.pl/]
         }).install();
 
-        // zarejestruj prosty komunikat
-        Raven.captureMessage('hello world!');
-
-        // przechwyć wyjątek
-        try {
-            errorThrowingCode();
-        } catch(err) {
-            Raven.captureException(err);
-        }
+        window.onerror = Raven.process
     });
 </script>
