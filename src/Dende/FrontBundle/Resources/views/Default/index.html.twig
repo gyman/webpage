@@ -1,5 +1,52 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-bla bla bla
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div id="screenshots-carousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+
+                {% set screenshots = {
+                    1 : { "src" : "/bundles/front/img/screenshots/add_event.png", "title" : "Dodawanie nowego eventu" },
+                    2 : { "src" : "/bundles/front/img/screenshots/calendar.png", "title" : "Kalendarz" },
+                    3 : { "src" : "/bundles/front/img/screenshots/dashboard.png", "title" : "Dashboard" },
+                    4 : { "src" : "/bundles/front/img/screenshots/entry_add.png", "title" : "Dodawanie nowego wejścia" },
+                    5 : { "src" : "/bundles/front/img/screenshots/member_edit.png", "title" : "Edycja uczestnika" },
+                    6 : { "src" : "/bundles/front/img/screenshots/members.png", "title" : "Lista uczestników" },
+                    7 : { "src" : "/bundles/front/img/screenshots/members_2.png", "title" : "Lista uczestników ze szczegółami" },
+                    8 : { "src" : "/bundles/front/img/screenshots/navigation.png", "title" : "Nawigacja po serwisie" },
+                } %}
+
+                <ol class="carousel-indicators">
+                    {% for img in screenshots %}
+                        <li data-target="#screenshots-carousel" data-slide-to="{{ loop.index }}" {% if loop.index == 1 %} class="active"{% endif %}></li>
+                        {% endfor %}
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    {% for img in screenshots %}
+                        <div class="item{% if loop.index == 1 %} active{% endif %}">
+                            <img src="{{ asset(img.src) }}" alt="{{ img.title }}">
+                            <div class="carousel-caption">
+                                {{ loop.index }}. {{ img.title }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#screenshots-carousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#screenshots-carousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
 {% endblock %}
