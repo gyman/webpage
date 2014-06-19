@@ -11,7 +11,6 @@
                 social_tools: false,
                 allow_resize: true,
                 show_title: false,
-                
                 markup: '<div class="pp_pic_holder"> \
                             <div class="ppt">&nbsp;</div> \
                             <div class="pp_top"> \
@@ -62,12 +61,74 @@
 
 {% block body %}
 
+    <!-- opis funkcji -->
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div id="screenshots-carousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
+        <div class="col-md-12">
+            <div class="banner-set load">
+                <div class="container">
+                    <div class="title-box">
+                        <h1 class="title">{{ "frontpage.captions.in_short"|trans }}</h1>
+                    </div>
+                        {% set slider = [
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.only_internet.title", "desc":"frontpage.what_offers.only_internet.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.do_it_yourself.title", "desc":"frontpage.what_offers.do_it_yourself.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.vouchers.title", "desc":"frontpage.what_offers.vouchers.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.camera.title", "desc":"frontpage.what_offers.camera.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.employees.title", "desc":"frontpage.what_offers.employees.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.members.title", "desc":"frontpage.what_offers.members.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.teams.title", "desc":"frontpage.what_offers.teams.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.multiple_clubs.title", "desc":"frontpage.what_offers.multiple_clubs.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.reports.title", "desc":"frontpage.what_offers.reports.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.payment.title", "desc":"frontpage.what_offers.payment.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.from_home.title", "desc":"frontpage.what_offers.from_home.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.mobile.title", "desc":"frontpage.what_offers.mobile.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.freedata.title", "desc":"frontpage.what_offers.freedata.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.notices.title", "desc":"frontpage.what_offers.notices.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.homepage.title", "desc":"frontpage.what_offers.homepage.description" },
+                { "fig" : "http://placehold.it/253x158", "title" : "frontpage.what_offers.calendar.title", "desc":"frontpage.what_offers.calendar.description" },
+                
+            ] %}
+                    <div class="banners">
+                        {% for item in slider %}
+                            <a href="#" class="banner">
+                                <img src="{{ item.fig }}" width="253" height="158" alt="">
+                                <h2 class="title">{{ item.title|trans }}</h2>
+                                <div class="description">{{ item.desc|trans }}</div>
+                            </a>
+                        {% endfor %}
+                    </div><!-- .banners -->
+                    <div class="clearfix"></div>
+                </div>
+                <div class="nav-box">
+                    <div class="container">
+                        <a class="prev" href="#"><span class="glyphicon glyphicon-arrow-left"></span></a>
+                        <div class="pagination switches"></div>
+                        <a class="next" href="#"><span class="glyphicon glyphicon-arrow-right"></span></a>	
+                    </div>
+                </div>
+            </div><!-- .banner-set -->
 
-                {% set screenshots = {
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- opis funkcji -->
+
+    <div class="container">
+        <div class="title-box">
+            <h1 class="title">{{ "frontpage.captions.about_us"|trans }}</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-md-6 bottom-padding">
+                <p class="lead"><strong>{{ "frontpage.paragraphs.about_us_1"|trans }}</strong></p>
+                <p>{{ "frontpage.paragraphs.about_us_2"|trans }}</p>
+                <p>{{ "frontpage.paragraphs.about_us_3"|trans }}</p>
+            </div>
+            <div class="col-md-6">
+                <div id="screenshots-carousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+
+                    {% set screenshots = {
                     1 : { "src" : "/bundles/front/img/screenshots/add_event.png", "title" : "Dodawanie nowego eventu" },
                     2 : { "src" : "/bundles/front/img/screenshots/calendar.png", "title" : "Kalendarz" },
                     3 : { "src" : "/bundles/front/img/screenshots/dashboard.png", "title" : "Dashboard" },
@@ -78,37 +139,38 @@
                     8 : { "src" : "/bundles/front/img/screenshots/navigation.png", "title" : "Nawigacja po serwisie" },
                 } %}
 
-                <ol class="carousel-indicators">
-                {% for img in screenshots %}
-                    <li data-target="#screenshots-carousel" data-slide-to="{{ loop.index }}" {% if loop.index == 1 %} class="active"{% endif %}></li>
-                {% endfor %}
-                </ol>
+                    <ol class="carousel-indicators">
+                        {% for img in screenshots %}
+                            <li data-target="#screenshots-carousel" data-slide-to="{{ loop.index }}" {% if loop.index == 1 %} class="active"{% endif %}></li>
+                            {% endfor %}
+                    </ol>
 
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                    {% for img in screenshots %}
-                    <div class="item{% if loop.index == 1 %} active{% endif %}">
-                        <a rel="prettyPhoto[screenshots]" href="{{ asset(img.src) }}" title="{{ img.title }}">
-                            <img src="{{ asset(img.src) }}" alt="{{ img.title }}">
-                        </a>
-{#                        <div class="carousel-caption">
-                            {{ loop.index }}. {{ img.title }}
-                        </div>#}
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        {% for img in screenshots %}
+                            <div class="item{% if loop.index == 1 %} active{% endif %}">
+                                <a rel="prettyPhoto[screenshots]" href="{{ asset(img.src) }}" title="{{ img.title }}">
+                                    <img src="{{ asset(img.src) }}" alt="{{ img.title }}">
+                                </a>
+                                {#                        <div class="carousel-caption">
+                                                            {{ loop.index }}. {{ img.title }}
+                                                        </div>#}
+                            </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                </div>
 
-                <!-- Controls -->
-                <a class="left carousel-control" href="#screenshots-carousel" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a class="right carousel-control" href="#screenshots-carousel" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#screenshots-carousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#screenshots-carousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
 
 
-{% endblock %}
+    {% endblock %}
