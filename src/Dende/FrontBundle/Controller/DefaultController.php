@@ -39,6 +39,16 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/download",name="frontpage_download")
+     * @Template()
+     */
+    public function downloadAction(Request $request)
+    {
+        return array(
+            "download_link" => $this->container->getParameter("download_link")
+        );
+    }
+    /**
      * @Route("/contact",name="frontpage_contact")
      * @Method({"GET","POST"})
      * @Template()

@@ -1,0 +1,24 @@
+{% extends "FrontBundle::layout.html.twig" %}
+
+{% block main %}
+    <section id="main">
+        <article class="content">
+            <header class="page-header">
+                <div class="container">
+                    <h1 class="title">Pobierz</h1>
+                </div>	
+            </header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 bottom-padding">
+                        <h3>{{ "download.caption.you_can_download"|trans }}</h3>
+                        <p>{{ "download.paragraph.you_can_download"|trans }}</p>
+                    </div>
+                    <div class="col-sm-6 col-md-6 bottom-padding">
+                      <a class="btn" href="{{ download_link }}">{{ "download.button.get_from_github"|trans }}</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section><!-- #main -->
+{% endblock main %}

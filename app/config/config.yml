@@ -79,3 +79,6 @@ swiftmailer:
 #    spool:
 #        type: file
 #        path: "%kernel.root_dir%/spool"
+
+front:
+    download_link:  %download_link%
