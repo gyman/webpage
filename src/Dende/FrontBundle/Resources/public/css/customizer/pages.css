@@ -175,7 +175,7 @@
   padding-bottom: 66px;
 }
 .header .logo img {
-  width: 158px;
+  /*width: 158px;*/
 }
 @media (max-width: 979px) {
   .full-width-box .services.row {
