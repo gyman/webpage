@@ -3,6 +3,8 @@ set :domain,      "#{application}.pl"
 set :deploy_to,   "/home/uirapuru/domains/gyman.pl"
 set :app_path,    "app"
 
+set :user, "uirapuru"
+
 set :ssh_options, {
     :forward_agent => true,
     :auth_methods => ["publickey"],
