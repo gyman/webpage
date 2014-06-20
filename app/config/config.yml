@@ -82,3 +82,4 @@ swiftmailer:
 
 front:
     download_link:  %download_link%
+    github_link:    %github_link%

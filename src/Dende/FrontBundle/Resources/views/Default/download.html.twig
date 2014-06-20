@@ -5,7 +5,7 @@
         <article class="content">
             <header class="page-header">
                 <div class="container">
-                    <h1 class="title">Pobierz</h1>
+                    <h1 class="title">{{ "download.caption.download"|trans }}</h1>
                 </div>	
             </header>
             <div class="container">
@@ -15,7 +15,13 @@
                         <p>{{ "download.paragraph.you_can_download"|trans }}</p>
                     </div>
                     <div class="col-sm-6 col-md-6 bottom-padding">
-                      <a class="btn" href="{{ download_link }}">{{ "download.button.get_from_github"|trans }}</a>
+                        <div class="btn-icon">
+                      <a class="sbtnf sbtnf-rounded sbtnf-icon-white sbtnf-icon-bg-black color icon-github" href="{{ download_link }}">
+                          {{ "download.button.get_from_github"|trans }}
+                      </a>
+                        </div>
+
+                      <a href="{{ github_link }}">{{ "download.button.go_to_github"|trans }}</a>
                     </div>
                 </div>
             </div>

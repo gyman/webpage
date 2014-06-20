@@ -1,26 +1,48 @@
-frontpage:
-    captions:
-        in_short:           GyMan w skrócie
-        about_us:           Trochę o nas
-    paragraphs:
-        about_us_1:         Naszym celem jest stworzyć proste, tanie i przystępne narzędzie, które pomoże zarządzać Ci Twoim biznesem lub organizacją.
-        about_us_2:         Prowadzisz siłownię, klub sportowy, a może zajęcia z dziećmi? Taniec? Joga? Sztuki walki? Wszędzie tam, przydałaby się kontrola nad różnego rodzaju sprawami. Czasami też możesz sobie nie zdawać sprawy ze źródła kłopotów. Mało tego - możesz nie być nawet ich świadom!
-        about_us_3:         GyMan ma na celu liczyć, analizować, przechowywać i pamiętać za Ciebie. Będzie również przypominał, sugerował i prezentował. A Ty będziesz mógł skupić się na właściwej części swojego biznesu.
-    what_offers:
-        only_internet:      { title: "Potrzebny tylko internet", description: "Jeżeli chcesz szybko rozpocząć korzystanie z GyMan - po prostu załóż konto. I już." }
-        do_it_yourself:     { title: "Zainstaluj u siebie", description: "Jeżeli czujesz się na siłach, możesz pobrać kod źródłowy i zainstalować GyMan na własnym komputerze. Za darmo." }
-        vouchers:           { title: "Obsługa karnetów", description: "Możesz używać karnetów np. z kodami kreskowymi. Wystarczy podpiąć do komputera odpowiedni czytnik kodów a następnie przypisać kod uczestnikowi zajęć." }
-        camera:             { title: "Szybkie zdjęcie", description: "Za pomocą kamery internetowej w parę sekund do danych uczestnika dodasz jego zdjęcie" }
-        employees:          { title: "Twoi pracownicy", description: "W raportach możesz zobaczyć kiedy i jak długo pracowały osoby z dostępem do systemu. Możesz też sprawdzić każdą wprowadzoną zmianę." }
-        members:            { title: "Uczestnicy", description: "Możesz przechowywać i analizować tak dużo danych o swoich uczestnikach jak tylko chcesz." }
-        teams:              { title: "Zespoły", description: "Jeżeli posiadasz kilka klubów albo sekcji, przypisz do niego zespoły pracowników" }
-        multiple_clubs:     { title: "Kilka klubów?", description: "Żaden problem. Odseparuj od siebie dane z różnych klubów, sekcji, grup. Możesz ich tworzyć tak dużo jak chcesz." }
-        reports:            { title: "Raporty", description: "W dowolnej chwili pobierz lub wydrukuj interesujące Cię podsumowania." }
-        payment:            { title: "Płatności", description: "Jeżeli chcesz, możesz swoim uczestnikom umożliwić opłacanie zajęć online." }
-        from_home:          { title: "Dostęp z zewnątrz", description: "Masz możliwość wysyłania zaproszeń swoim uczestnikom. Mogą zobaczyć swoje postępy i inne informacje siedząc w domowym fotelu." }
-        mobile:             { title: "Aplikacja mobilna", description: "Chcesz mieć pełny dostęp z poziomu telefonu czy tabletu? Zainstaluj aplikację... i to wszystko." }
-        freedata:           { title: "Wolne dane", description: "Wszystkie Twoje dane są wolne. Możesz je ściągnąć i przenieść do innego systemu, zgrać w formie kopii bezpieczeństwa lub przenosić między aplikacją lokalną i online." }
-        notices:            { title: "Powiadomienia", description: "Powiadamiaj za pomocą sms oraz email swoich uczestników o zmianach zajęć" }
-        homepage:           { title: "Własna strona", description: "Możesz w naszej domenie założyć wizytówkę, na której będziesz mógł zaprezentować swoje podstawowe dane, informacje o zajęciach, grafik, jak dojechać itd." }
-        calendar:           { title: "Kalendarz", description: "Używasz kalendarza google? Możesz się z nim wpełni synchronizować." }
-    
+frontpage.captions.in_short: 'GyMan w skrócie'
+frontpage.captions.about_us: 'Trochę o nas'
+frontpage.paragraphs.about_us_1: 'Naszym celem jest stworzyć proste, tanie i przystępne narzędzie, które pomoże zarządzać Ci Twoim biznesem lub organizacją.'
+frontpage.paragraphs.about_us_2: 'Prowadzisz siłownię, klub sportowy, a może zajęcia z dziećmi? Taniec? Joga? Sztuki walki? Wszędzie tam, przydałaby się kontrola nad różnego rodzaju sprawami. Czasami też możesz sobie nie zdawać sprawy ze źródła kłopotów. Mało tego - możesz nie być nawet ich świadom!'
+frontpage.paragraphs.about_us_3: 'GyMan ma na celu liczyć, analizować, przechowywać i pamiętać za Ciebie. Będzie również przypominał, sugerował i prezentował. A Ty będziesz mógł skupić się na właściwej części swojego biznesu.'
+frontpage.what_offers.only_internet.title: 'Potrzebny tylko internet'
+frontpage.what_offers.only_internet.description: 'Jeżeli chcesz szybko rozpocząć korzystanie z GyMan - po prostu załóż konto. I już.'
+frontpage.what_offers.do_it_yourself.title: 'Zainstaluj u siebie'
+frontpage.what_offers.do_it_yourself.description: 'Jeżeli czujesz się na siłach, możesz pobrać kod źródłowy i zainstalować GyMan na własnym komputerze. Za darmo.'
+frontpage.what_offers.vouchers.title: 'Obsługa karnetów'
+frontpage.what_offers.vouchers.description: 'Możesz używać karnetów np. z kodami kreskowymi. Wystarczy podpiąć do komputera odpowiedni czytnik kodów a następnie przypisać kod uczestnikowi zajęć.'
+frontpage.what_offers.camera.title: 'Szybkie zdjęcie'
+frontpage.what_offers.camera.description: 'Za pomocą kamery internetowej w parę sekund do danych uczestnika dodasz jego zdjęcie'
+frontpage.what_offers.employees.title: 'Twoi pracownicy'
+frontpage.what_offers.employees.description: 'W raportach możesz zobaczyć kiedy i jak długo pracowały osoby z dostępem do systemu. Możesz też sprawdzić każdą wprowadzoną zmianę.'
+frontpage.what_offers.members.title: Uczestnicy
+frontpage.what_offers.members.description: 'Możesz przechowywać i analizować tak dużo danych o swoich uczestnikach jak tylko chcesz.'
+frontpage.what_offers.teams.title: Zespoły
+frontpage.what_offers.teams.description: 'Jeżeli posiadasz kilka klubów albo sekcji, przypisz do niego zespoły pracowników'
+frontpage.what_offers.multiple_clubs.title: 'Kilka klubów?'
+frontpage.what_offers.multiple_clubs.description: 'Żaden problem. Odseparuj od siebie dane z różnych klubów, sekcji, grup. Możesz ich tworzyć tak dużo jak chcesz.'
+frontpage.what_offers.reports.title: Raporty
+frontpage.what_offers.reports.description: 'W dowolnej chwili pobierz lub wydrukuj interesujące Cię podsumowania.'
+frontpage.what_offers.payment.title: Płatności
+frontpage.what_offers.payment.description: 'Jeżeli chcesz, możesz swoim uczestnikom umożliwić opłacanie zajęć online.'
+frontpage.what_offers.from_home.title: 'Dostęp z zewnątrz'
+frontpage.what_offers.from_home.description: 'Masz możliwość wysyłania zaproszeń swoim uczestnikom. Mogą zobaczyć swoje postępy i inne informacje siedząc w domowym fotelu.'
+frontpage.what_offers.mobile.title: 'Aplikacja mobilna'
+frontpage.what_offers.mobile.description: 'Chcesz mieć pełny dostęp z poziomu telefonu czy tabletu? Zainstaluj aplikację... i to wszystko.'
+frontpage.what_offers.freedata.title: 'Wolne dane'
+frontpage.what_offers.freedata.description: 'Wszystkie Twoje dane są wolne. Możesz je ściągnąć i przenieść do innego systemu, zgrać w formie kopii bezpieczeństwa lub przenosić między aplikacją lokalną i online.'
+frontpage.what_offers.notices.title: Powiadomienia
+frontpage.what_offers.notices.description: 'Powiadamiaj za pomocą sms oraz email swoich uczestników o zmianach zajęć'
+frontpage.what_offers.homepage.title: 'Własna strona'
+frontpage.what_offers.homepage.description: 'Możesz w naszej domenie założyć wizytówkę, na której będziesz mógł zaprezentować swoje podstawowe dane, informacje o zajęciach, grafik, jak dojechać itd.'
+frontpage.what_offers.calendar.title: Kalendarz
+frontpage.what_offers.calendar.description: 'Używasz kalendarza google? Możesz się z nim wpełni synchronizować.'
+download.caption.download: Pobierz
+download.caption.you_can_download: 'Pobierz GyMan'
+download.paragraph.you_can_download: 'Możesz pobrać aplikację na własny komputer i używać jej tam. Wszystkie dane są Twoje i nikt inny nie ma do nich wglądu. Musisz jednak pamiętać, że instalacja nie jest łatwa. Niedługo znajdzie się tu instrukcja wykonania jej krok po kroku.'
+download.button.get_from_github: 'Pobierz kod z GitHub'
+download.button.go_to_github: 'Kliknij, aby przejść do GitHub'
+pricing.page_title: 'Załóż konto - wybierz swój plan'
+pricing.caption.register_account: 'Wybierz rodzaj konta'
+pricing.plan.free.caption: __pricing.plan.free.caption
+pricing.plan.monthly.caption: __pricing.plan.monthly.caption
+pricing.plan.yearly.caption: __pricing.plan.yearly.caption
+pricing.plan.self-hosted.caption: __pricing.plan.self-hosted.caption

@@ -45,9 +45,20 @@ class DefaultController extends Controller
     public function downloadAction(Request $request)
     {
         return array(
-            "download_link" => $this->container->getParameter("download_link")
+            "download_link" => $this->container->getParameter("download_link"),
+            "github_link" => $this->container->getParameter("github_link")
         );
     }
+
+    /**
+     * @Route("/pricing",name="frontpage_pricing")
+     * @Template()
+     */
+    public function pricingAction(Request $request)
+    {
+        return array();
+    }
+    
     /**
      * @Route("/contact",name="frontpage_contact")
      * @Method({"GET","POST"})

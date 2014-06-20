@@ -21,6 +21,10 @@ class Configuration implements ConfigurationInterface
                     ->cannotBeEmpty()
                     ->isRequired()
                 ->end()
+                ->scalarNode("github_link")
+                    ->cannotBeEmpty()
+                    ->isRequired()
+                ->end()
             ->end()
         ;
 
