@@ -42,7 +42,8 @@ download.button.get_from_github: 'Pobierz kod z GitHub'
 download.button.go_to_github: 'Kliknij, aby przejść do GitHub'
 pricing.page_title: 'Załóż konto - wybierz swój plan'
 pricing.caption.register_account: 'Wybierz rodzaj konta'
-pricing.plan.free.caption: __pricing.plan.free.caption
-pricing.plan.monthly.caption: __pricing.plan.monthly.caption
-pricing.plan.yearly.caption: __pricing.plan.yearly.caption
-pricing.plan.self-hosted.caption: __pricing.plan.self-hosted.caption
+pricing.plan.free.caption: Darmowy
+pricing.plan.monthly.caption: Miesięczny
+pricing.plan.yearly.caption: Roczny
+pricing.plan.self-hosted.caption: Pobierz
+pricing.download.install.caption: __pricing.download.install.caption
