@@ -80,6 +80,11 @@ swiftmailer:
 #        type: file
 #        path: "%kernel.root_dir%/spool"
 
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Dende\AccountBundle\Entity\User
+
 front:
     download_link:  %download_link%
     github_link:    %github_link%
