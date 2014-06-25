@@ -75,7 +75,7 @@ swiftmailer:
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
-    delivery_address: "uirapuruadg@gmail.com"
+    delivery_address: "%delivery_adderss%"
 #    spool:
 #        type: file
 #        path: "%kernel.root_dir%/spool"
