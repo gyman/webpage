@@ -22,6 +22,12 @@ set :php_bin, "php"
 
 set :repository,  "https://github.com/uirapuru/gyman.pl.git"
 set :scm,         :git
+set :branch, "master"
+
+set :writable_dirs,       ["app/cache", "app/logs"]
+set :webserver_user,      "www-data"
+set :permission_method,   :acl
+set :use_set_permissions, true
 
 set :model_manager, "doctrine"
 
