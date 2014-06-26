@@ -18,5 +18,7 @@ parameters:
     debug_redirects:        false
     use_assetic_controller: true
 
+    delivery_address: some@email.com
+
     download_link:      https://github.com/uirapuru/gyman.pl/archive/master.zip
     github_link:      https://github.com/uirapuru/gyman.pl/

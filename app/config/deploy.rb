@@ -19,7 +19,7 @@ set :vendors_mode, "install"
 set :shared_files,      ["app/config/parameters.yml"]
 set :shared_children,     [app_path + "/logs", web_path + "/uploads", "vendor", app_path + "/spool"]
 
-set :php_bin,           "/usr/local/php5.4/bin/php"
+set :php_bin, "/usr/local/php5.4/bin/php -c /usr/local/php54.ini"
 
 set :repository,  "https://github.com/uirapuru/gyman.pl.git"
 set :scm,         :git
