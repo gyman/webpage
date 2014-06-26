@@ -12,7 +12,7 @@ set :ssh_options, {
 
 set :use_composer, true
 set :composer_options,  "--no-dev --verbose --prefer-dist --optimize-autoloader"
-set :update_vendors, false
+set :update_vendors, true
 set :vendors_mode, "install"
 set :cache_warmup, false
 
