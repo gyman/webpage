@@ -10,6 +10,8 @@ set :ssh_options, {
     :auth_methods => ["publickey"],
 }
 
+default_run_options[:pty] = true
+
 set :use_composer, true
 set :composer_options,  "--no-dev --verbose --prefer-dist --optimize-autoloader"
 set :update_vendors, false
@@ -38,15 +40,14 @@ set  :keep_releases,  3
 set :use_sudo,  false
 
 # Be more verbose by uncommenting the following line
-# logger.level = Logger::MAX_LEVEL
+logger.level = Logger::MAX_LEVEL
 
 # Run migrations before warming the cache
 # before "symfony:cache:warmup", "symfony:doctrine:migrations:migrate"
  
 # Custom(ised) tasks
-namespace :deploy do
+namespace :apache do
 	# Apache needs to be restarted to make sure that the APC cache is cleared.
-	# This overwrites the :restart task in the parent config which is empty.
 	desc "Restart Apache"
 	task :restart, :except => { :no_release => true }, :roles => :app do
 		run "sudo /etc/init.d/apache2 restart"
