@@ -49,7 +49,7 @@ namespace :deploy do
 	# This overwrites the :restart task in the parent config which is empty.
 	desc "Restart Apache"
 	task :restart, :except => { :no_release => true }, :roles => :app do
-		run "sudo service apache2 restart"
+		run "sudo /etc/init.d/apache2 restart"
 		puts "--> Apache successfully restarted".green
 	end
 end
