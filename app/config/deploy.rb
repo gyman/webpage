@@ -38,4 +38,18 @@ set  :keep_releases,  3
 set :use_sudo,  false
 
 # Be more verbose by uncommenting the following line
-logger.level = Logger::MAX_LEVEL
+# logger.level = Logger::MAX_LEVEL
+
+# Run migrations before warming the cache
+# before "symfony:cache:warmup", "symfony:doctrine:migrations:migrate"
+ 
+# Custom(ised) tasks
+namespace :deploy do
+	# Apache needs to be restarted to make sure that the APC cache is cleared.
+	# This overwrites the :restart task in the parent config which is empty.
+	desc "Restart Apache"
+	task :restart, :except => { :no_release => true }, :roles => :app do
+		run "sudo service apache2 restart"
+		puts "--> Apache successfully restarted".green
+	end
+end
