@@ -12,14 +12,12 @@ set :ssh_options, {
 
 set :use_composer, true
 set :composer_options,  "--no-dev --verbose --prefer-dist --optimize-autoloader"
-set :update_vendors, true
+set :update_vendors, false
 set :vendors_mode, "install"
 set :cache_warmup, false
 
 set :shared_files,      ["app/config/parameters.yml"]
 set :shared_children,     [app_path + "/logs", web_path + "/uploads", app_path + "/spool"]
-
-set :php_bin, "php"
 
 set :repository,  "https://github.com/uirapuru/gyman.pl.git"
 set :scm,         :git
