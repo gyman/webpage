@@ -1,0 +1,20 @@
+account.register.header_link_register: Rejestracja
+account.register.header_or: czy
+account.register.header_link_login: logowanie?
+account.register.caption: 'Zarejestruj konto, jeśli go jeszcze nie posiadasz, w przeciwnym razie - zaloguj się'
+account.register.label.username: 'Nazwa użytkownika'
+account.register.label.password: 'Hasło'
+account.register.label.password_repeat: 'Powtórz hasło'
+account.register.label.email: 'Adres e-mail'
+account.register.label.submit: 'Zarejestruj nowe konto'
+account.register.required_info: 'pole jest wymagane'
+
+account.login.header_link_login: Logowanie
+account.login.header_or: czy
+account.login.header_link_register: rejestracja?
+account.login.caption: 'Zaloguj się, jeśli posiadasz już konto, w przeciwnym razie - zarejestruj się'
+account.login.label.username: 'Nazwa użytkownika'
+account.login.label.password: 'Hasło'
+account.login.label.submit: 'Zaloguj się'
+account.login.required_info: 'pole jest wymagane'
+account.login.remember_me: 'Zapamiętaj mnie'

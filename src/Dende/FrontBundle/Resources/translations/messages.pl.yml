@@ -48,3 +48,11 @@ pricing.plan.yearly.caption: Roczny
 pricing.plan.self-hosted.caption: Pobierz
 pricing.download.install.caption: Zainstaluj sam
 pricing.download.no-install.caption: Gotowy do działania
+
+menu.label.description: "Opis"
+menu.label.blog : "Blog"
+menu.label.demo_app: "Zobacz demo"
+menu.label.download: "Pobierz"
+menu.label.pricing: "Załóż konto"
+menu.label.contact: "Kontakt"
+menu.label.login: "Zaloguj się"

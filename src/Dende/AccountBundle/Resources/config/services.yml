@@ -1,0 +1,6 @@
+services:
+    account_bundle.registration.form.type:
+        class: Dende\AccountBundle\Form\Type\RegisterType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: dende_user_registration }

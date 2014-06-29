@@ -37,26 +37,11 @@
                   <div class="primary">
                           <div role="navigation" class="navbar navbar-default">
                             <nav class="collapse collapsing navbar-collapse">
-                                  <ul class="nav navbar-nav navbar-center">
-                                    <li>
-                                          <a href="/">Opis</a>
-                                    </li>
-                                    {#<li>
-                                          <a href="/">Blog</a>
-                                    </li>#}
-                                    <li>
-                                          <a href="http://app.gyman.pl">Zobacz demo</a>
-                                    </li>
-                                    <li>
-                                          <a href="{{ path("frontpage_download") }}">Pobierz</a>
-                                    </li>
-                                    <li>
-                                          <a href="{{ path("frontpage_pricing") }}">Załóż konto</a>
-                                    </li>
-                                    <li>
-                                          <a href="{{ path("frontpage_contact") }}">Kontakt</a>
-                                    </li>
-                                  </ul>
+                                {{ knp_menu_render('FrontBundle:Builder:navigation', {
+                                    'template': 'FrontBundle::navigation.html.twig',
+                                    'currentAsLink' : true,
+                                    'depth' : 2,
+                                }) }}
                             </nav>
                           </div>
                     </div>

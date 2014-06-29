@@ -1,0 +1,32 @@
+{% block stylesheets %}
+
+    {% stylesheets
+        'bundles/front/css/buttons/social-icons.css'
+        'bundles/front/css/font-awesome.min.css'
+        'bundles/front/css/bootstrap.min.css'
+        'bundles/front/css/jslider.css'
+        'bundles/front/css/settings.css'
+        'bundles/front/css/jquery.fancybox.css'
+        'bundles/front/css/animate.css'
+        'bundles/front/css/video-js.min.css'
+        'bundles/front/css/morris.css'
+        'bundles/front/css/royalslider/royalslider.css'
+        'bundles/front/css/royalslider/skins/minimal-white/rs-minimal-white.css'
+        'bundles/front/css/layerslider/layerslider.css'
+        'bundles/front/css/ladda.min.css'
+        'bundles/front/css/style.css'
+        'bundles/front/css/responsive.css'
+        'bundles/front/css/customizer/pages.css'
+        'bundles/front/css/customizer/home-pages-customizer.css'
+        'bundles/front/css/ie/ie.css'
+
+        filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <link rel='stylesheet' href="{{ asset('bundles/front/css/ie/ie8.css') }}">
+  <![endif]-->

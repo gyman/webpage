@@ -1,0 +1,33 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error|trans }}</div>
+{% endif %}
+
+<form class="form-content login-form" action="{{ path("fos_user_security_check") }}" method="POST" class="fos_user_security_login">
+    <h3 class="title">{{ "account.login.header_link_login"|trans }}
+        <small>{{ "account.login.header_or"|trans }}
+            <a href="{{ path('fos_user_registration_register') }}" class="sign-in">{{ "account.login.header_link_register"|trans }}</a>
+        </small>
+    </h3>
+        
+    <p>{{ "account.login.caption"|trans }}</p>
+    
+    <label>{{ "account.login.label.username"|trans }}: <span class="required">*</span></label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control"/>
+
+    <label>{{ "account.login.label.password"|trans }}: <span class="required">*</span></label>
+    <input type="password" id="password" name="_password" required="required" class="form-control" />
+
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'account.login.remember_me'|trans }}</label>
+    
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <div class="buttons-box clearfix">
+      <button name="_submit" type="submit" class="btn btn-default">{{ "account.login.label.submit"|trans }}</button>
+      <span class="required"><b>*</b> {{ "account.login.required_info"|trans }}</span>
+    </div>
+</form>
+{% endblock fos_user_content %}
