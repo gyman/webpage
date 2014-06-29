@@ -24,12 +24,39 @@ class Builder extends ContainerAware
  
         $menu->setChildrenAttributes(array('class' => 'nav navbar-nav navbar'));
         
-        foreach($this->navigationItems as $label => $route) {
-            $menu->addChild($label, array('route' => $route))
+        $menu->addChild('menu.label.description', array('route' => "frontpage_index"))
+            ->setExtra('translation_domain', 'FrontBundle');
+        
+        $menu->addChild("menu.label.blog", array('route' => "frontpage_index"))
+            ->setExtra('translation_domain', 'FrontBundle');
+        
+        $menu->addChild("menu.label.demo_app", array('route' => "frontpage_index"))
+            ->setExtra('translation_domain', 'FrontBundle');
+        
+//        $menu->addChild('menu.label.download', array('route' => "frontpage_download"))
+//            ->setExtra('translation_domain', 'FrontBundle');
+        
+        $menu->addChild("menu.label.contact", array('route' => "frontpage_contact"))
+            ->setExtra('translation_domain', 'FrontBundle');
+        
+        $menu->addChild("menu.label.pricing", array('route' => "frontpage_pricing"))
+            ->setExtra('translation_domain', 'FrontBundle');
+
+        if($this->isLogged()) {
+            $menu->addChild("menu.label.logout", array('route' => "fos_user_security_logout"))
+                ->setExtra('translation_domain', 'FrontBundle');
+        } else {
+            $menu->addChild("menu.label.login", array('route' => "fos_user_security_login"))
                 ->setExtra('translation_domain', 'FrontBundle');
         }
         
         return $menu;
+    }
+    
+    private function isLogged()
+    {
+        $securityContext = $this->container->get('security.context');
+        return $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED');
     }
     
 }

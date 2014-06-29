@@ -1,9 +1,6 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
-{% if error %}
-    <div>{{ error|trans }}</div>
-{% endif %}
 
 <form class="form-content login-form" action="{{ path("fos_user_security_check") }}" method="POST" class="fos_user_security_login">
     <h3 class="title">{{ "account.login.header_link_login"|trans }}
@@ -13,6 +10,17 @@
     </h3>
         
     <p>{{ "account.login.caption"|trans }}</p>
+
+    {% if error %}
+    <div class="alert alert-danger fade in ">
+        <i class="fa fa-envelope alert-icon"></i>
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Wystąpiły błędy!</strong>
+        <ul>
+            <li>{{ error|trans }}</li>
+        </ul>
+    </div>
+    {% endif %}
     
     <label>{{ "account.login.label.username"|trans }}: <span class="required">*</span></label>
     <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control"/>

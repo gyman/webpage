@@ -6,6 +6,19 @@
     </h3>
         
     <p>{{ "account.register.caption"|trans }}</p>
+
+    {% if form.vars.errors|length %}
+    <div class="alert alert-danger fade in ">
+        <i class="fa fa-envelope alert-icon"></i>
+        <button data-dismiss="alert" class="close" type="button">×</button>
+        <strong>Wystąpiły błędy!</strong>
+        <ul>
+            {% for error in form.vars.errors %}
+                <li>{{ error.message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
     
     <label>{{ "account.register.label.username"|trans }}: <span class="required">*</span></label>
     {{ form_widget(form.username, {'attr':{'class':'form-control' }}) }}
