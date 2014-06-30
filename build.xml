@@ -3,6 +3,7 @@
 <project name="gyman" default="prepare">
    <target name="deploy-prod">
       <exec command="cap deploy" checkreturn="true" output="stdout" />
+      <exec command="cap deploy:cleanup" checkreturn="true" output="stdout" />
       <exec command="cap apache:restart" checkreturn="true" output="stdout" />
       <exec command="cap symfony:assets:install" checkreturn="true" output="stdout" />
       <exec command="cap symfony:assetic:dump" checkreturn="true" output="stdout" />
