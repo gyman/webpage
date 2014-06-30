@@ -8,6 +8,20 @@
       <exec command="cap symfony:assetic:dump" checkreturn="true" output="stdout" />
       <exec command="cap symfony:cache:clear" checkreturn="true" output="stdout" />
    </target>
+   
+    <target name="reset-db">
+       <echo>Dropping database</echo>
+      <exec command="php app/console doctrine:schema:drop --env=${env} --force --no-interaction" checkreturn="true" passthru="true" />
+       <echo>Creating new schema</echo>
+      <exec command="php app/console doctrine:schema:create --env=${env} --no-interaction" checkreturn="true" passthru="true"  />
+       <echo>Loading fixtures</echo>
+      <exec command="php app/console doctrine:fixtures:load --env=${env} --no-interaction" checkreturn="true" passthru="true"  />
+    </target>
+   
+    <target name="test-phpunit">
+       <echo>Running phpunit tests</echo>
+      <exec command="bin/phpunit -c app" checkreturn="true" passthru="true" />
+    </target>
 
    <target name="prepare">
    </target>
