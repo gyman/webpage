@@ -8,7 +8,7 @@
       <exec command="cap symfony:assetic:dump" checkreturn="true" output="stdout" />
       <exec command="cap symfony:cache:clear" checkreturn="true" output="stdout" />
    </target>
-   
+      
     <target name="reset-db">
        <echo>Dropping database</echo>
       <exec command="php app/console doctrine:schema:drop --env=${env} --force --no-interaction" checkreturn="true" passthru="true" />

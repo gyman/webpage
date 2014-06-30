@@ -21,4 +21,5 @@ parameters:
     delivery_address: some@email.com
 
     download_link:      https://github.com/uirapuru/gyman.pl/archive/master.zip
-    github_link:      https://github.com/uirapuru/gyman.pl/
+    github_link:        https://github.com/uirapuru/gyman.pl/
+    testing_url:        "http://gyman.pl"
