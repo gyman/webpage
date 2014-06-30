@@ -1,29 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="gyman" default="prepare">
-   <target name="deploy-prod">
-      <exec command="cap deploy" checkreturn="true" output="stdout" />
-      <exec command="cap deploy:cleanup" checkreturn="true" output="stdout" />
-      <exec command="cap apache:restart" checkreturn="true" output="stdout" />
-      <exec command="cap symfony:assets:install" checkreturn="true" output="stdout" />
-      <exec command="cap symfony:assetic:dump" checkreturn="true" output="stdout" />
-      <exec command="cap symfony:cache:clear" checkreturn="true" output="stdout" />
-   </target>
+
+    <target name="phpcs" description="php code sniffer">
+        <exec command="${project.basedir}/bin/phpcs --standard=${project.basedir}/app/phpcs.xml ${project.basedir}/src/" checkreturn="true" passthru="true" />
+    </target>
+
+    <target name="test-phplint" description="linting phpfiles">
+        <foreach param="fname" absparam="php-file" target="phplint">
+            <fileset dir="${project.basedir}">
+                <include name="app/**/*.php" />
+                <include name="src/**/*.php" />
+                <exclude name="app/cache/**/*.php" />
+            </fileset>
+        </foreach>
+    </target>
+    
+    <target name="phplint">
+        <exec command="php -l ${php-file}" checkreturn="true" passthru="true" />
+    </target>
+
+    <target name="test-twiglint">
+        <exec command="php app/console twig:lint app/Resources" checkreturn="true" passthru="true" />
+        <exec command="php app/console twig:lint src" checkreturn="true" passthru="true" />
+    </target>
+        
+    <target name="deploy-prod">
+        <exec command="cap deploy" checkreturn="true" output="stdout" />
+        <exec command="cap deploy:cleanup" checkreturn="true" output="stdout" />
+        <exec command="cap apache:restart" checkreturn="true" output="stdout" />
+        <exec command="cap symfony:assets:install" checkreturn="true" output="stdout" />
+        <exec command="cap symfony:assetic:dump" checkreturn="true" output="stdout" />
+        <exec command="cap symfony:cache:clear" checkreturn="true" output="stdout" />
+    </target>
       
     <target name="reset-db">
-       <echo>Dropping database</echo>
-      <exec command="php app/console doctrine:schema:drop --env=${env} --force --no-interaction" checkreturn="true" passthru="true" />
-       <echo>Creating new schema</echo>
-      <exec command="php app/console doctrine:schema:create --env=${env} --no-interaction" checkreturn="true" passthru="true"  />
-       <echo>Loading fixtures</echo>
-      <exec command="php app/console doctrine:fixtures:load --env=${env} --no-interaction" checkreturn="true" passthru="true"  />
+        <if>
+            <equals arg1="${env}" arg2="prod" />
+            <then>
+                <fail message="Cannot reset-db on prod environment!!!" />
+            </then>
+        </if>
+        <echo>Dropping database - ${env} environment</echo>
+        <exec command="php app/console doctrine:schema:drop --env=${env} --force --no-interaction" checkreturn="true" passthru="true" />
+        <echo>Creating new schema - ${env} environment</echo>
+        <exec command="php app/console doctrine:schema:create --env=${env} --no-interaction" checkreturn="true" passthru="true"  />
+        <echo>Loading fixtures - ${env} environment</echo>
+        <exec command="php app/console doctrine:fixtures:load --env=${env} --no-interaction" checkreturn="true" passthru="true"  />
     </target>
    
     <target name="test-phpunit">
-       <echo>Running phpunit tests</echo>
-      <exec command="bin/phpunit -c app" checkreturn="true" passthru="true" />
+        <phingcall target="reset-db">
+            <property name="env" value="test" />
+        </phingcall>
+      
+        <echo>Running phpunit tests</echo>
+        <exec command="bin/phpunit -c app" checkreturn="true" passthru="true" />
+    </target>
+    
+    <target name="test">
+        <phingcall target="test-phplint" />
+        <phingcall target="test-twiglint" />
+        <phingcall target="test-phpunit" />
     </target>
 
-   <target name="prepare">
-   </target>
+    <target name="prepare">
+        <echo>Prepare task</echo>
+    </target>
 </project>
