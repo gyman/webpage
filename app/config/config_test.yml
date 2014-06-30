@@ -1,5 +1,5 @@
 parameters:
-    testing_url: gyman.local
+    testing_url: test.gyman.pl
 
 imports:
     - { resource: config_dev.yml }
