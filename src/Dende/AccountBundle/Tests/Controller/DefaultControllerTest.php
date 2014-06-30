@@ -14,6 +14,4 @@ class DefaultControllerTest extends BaseTest
         $this->assertPageResponseCode(200);
         $this->assertPageContainsText("account.login.header_link_login");
     }
-    
-    
 }

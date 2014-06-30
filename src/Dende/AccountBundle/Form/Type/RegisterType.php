@@ -10,8 +10,16 @@ class RegisterType extends BaseType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle', 'error_bubbling' => true))
-            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle', 'error_bubbling' => true))
+            ->add('email', 'email', array(
+                'label' => 'form.email',
+                'translation_domain' => 'FOSUserBundle',
+                'error_bubbling' => true
+            ))
+            ->add('username', null, array(
+                'label' => 'form.username',
+                'translation_domain' => 'FOSUserBundle',
+                'error_bubbling' => true
+            ))
             ->add('plainPassword', 'repeated', array(
                 'type' => 'password',
                 'error_bubbling' => true,

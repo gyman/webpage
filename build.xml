@@ -6,6 +6,10 @@
         <exec command="${project.basedir}/bin/phpcs --standard=${project.basedir}/app/phpcs.xml ${project.basedir}/src/" checkreturn="true" passthru="true" />
     </target>
 
+    <target name="phpcbf" description="php code beautifier and fixer">
+        <exec command="${project.basedir}/bin/phpcbf -p --encoding=utf8 --standard=${project.basedir}/app/phpcs.xml ${project.basedir}/src/" checkreturn="true" passthru="true" />
+    </target>
+
     <target name="test-phplint" description="linting phpfiles">
         <foreach param="fname" absparam="php-file" target="phplint">
             <fileset dir="${project.basedir}">
@@ -61,6 +65,7 @@
     <target name="test">
         <phingcall target="test-phplint" />
         <phingcall target="test-twiglint" />
+        <phingcall target="phpcs" />
         <phingcall target="test-phpunit" />
     </target>
 

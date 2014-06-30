@@ -162,8 +162,7 @@ class DefaultControllerTest extends BaseTest
     {
         $this->assertEquals($count, $this->mailCollector->getMessageCount());
 
-        if ($count == 1)
-        {
+        if ($count == 1) {
             $collectedMessages = $this->mailCollector->getMessages();
             $message = $collectedMessages[0];
 
@@ -173,7 +172,8 @@ class DefaultControllerTest extends BaseTest
             $this->assertEquals($address, key($message->getFrom()));
             $this->assertEquals("some@email.com", key($message->getTo()));
             $this->assertContains(
-                'Wiadomość wysłana o godzinie', $message->getBody()
+                'Wiadomość wysłana o godzinie',
+                $message->getBody()
             );
         }
     }
@@ -214,5 +214,4 @@ class DefaultControllerTest extends BaseTest
 
         $this->crawler = $this->client->submit($form);
     }
-
 }

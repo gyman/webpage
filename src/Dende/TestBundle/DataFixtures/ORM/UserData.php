@@ -8,27 +8,30 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Dende\AccountBundle\Entity\User;
 use Symfony\Component\Yaml\Yaml;
 
-class UserData extends AbstractFixture implements OrderedFixtureInterface {
+class UserData extends AbstractFixture implements OrderedFixtureInterface
+{
 
     private $manager;
 
-    public function load(ObjectManager $manager) {
+    public function load(ObjectManager $manager)
+    {
         $this->manager = $manager;
         
         $value = Yaml::parse(file_get_contents(__DIR__.'/../Yaml/users.yml'));
         
-        foreach($value as $key => $params)
-        {
+        foreach ($value as $key => $params) {
             $object = $this->insert($params);
             $this->addReference($key, $object);
         }
     }
 
-    public function getOrder() {
+    public function getOrder()
+    {
         return 1;
     }
 
-    private function insert($params) {
+    private function insert($params)
+    {
         $user = new User();
         $user->setUsername($params["username"]);
         $user->setEmail($params["email"]);
@@ -40,5 +43,4 @@ class UserData extends AbstractFixture implements OrderedFixtureInterface {
 
         return $user;
     }
-
 }

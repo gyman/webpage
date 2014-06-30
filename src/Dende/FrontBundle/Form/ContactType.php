@@ -9,20 +9,22 @@ use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 
-class ContactType extends AbstractType {
+class ContactType extends AbstractType
+{
 
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options) {
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $builder
-                ->add('email',"email",array(
+                ->add('email', "email", array(
                     "label" => "Adres email",
                     "required" => true,
                     "constraints" => array(
                         new Email(array(
-                           "message" => "Nieprawidłowy adres email." 
+                           "message" => "Nieprawidłowy adres email."
                         )),
                         new NotBlank(array(
                             "message" => "Musisz podać email!"
@@ -30,7 +32,7 @@ class ContactType extends AbstractType {
                     ),
                     "error_bubbling" => true
                 ))
-                ->add('message',"textarea",array(
+                ->add('message', "textarea", array(
                     "label" => "Wiadomość",
                     "required" => true,
                     "constraints" => array(
@@ -39,19 +41,21 @@ class ContactType extends AbstractType {
                         )),
                         new Length(array(
                             "min" => 10,
-                            "minMessage" => "Wiadomość jest zbyt krótka, powinna zawierać conajmniej {{ limit }} znaków",
+                            "minMessage" => "Wiadomość jest zbyt krótka,"
+                            . " powinna zawierać conajmniej {{ limit }} znaków",
                             "max" => 1000,
-                            "maxMessage" => "Wiadomość jest zbyt długa, powinna zawierać maksymalnie {{ limit }} znaków",
+                            "maxMessage" => "Wiadomość jest zbyt długa,"
+                            . " powinna zawierać maksymalnie {{ limit }} znaków",
                         )),
                     ),
                     "error_bubbling" => true
                 ))
-                ->add('submit',"submit")
+                ->add('submit', "submit")
         ;
     }
 
-    public function getName() {
+    public function getName()
+    {
         return 'contact_form';
     }
-
 }

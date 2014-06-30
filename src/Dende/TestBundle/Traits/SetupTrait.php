@@ -2,13 +2,14 @@
 
 namespace Dende\TestBundle\Traits;
 
-trait SetupTrait {
+trait SetupTrait
+{
 
     protected $container;
 
-    public function setUp() {
-        if (null !== static::$kernel)
-        {
+    public function setUp()
+    {
+        if (null !== static::$kernel) {
             static::$kernel->shutdown();
         }
 
@@ -18,8 +19,8 @@ trait SetupTrait {
         $this->container = static::$kernel->getContainer();
     }
 
-    public function getContainer() {
+    public function getContainer()
+    {
         return $this->container;
     }
-
 }

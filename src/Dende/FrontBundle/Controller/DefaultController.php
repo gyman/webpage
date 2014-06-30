@@ -30,8 +30,7 @@ class DefaultController extends Controller
      */
     public function errorAction()
     {
-        if (1 == 1)
-        {
+        if (1 == 1) {
             throw new \Exception("some error");
         }
 
@@ -68,15 +67,14 @@ class DefaultController extends Controller
     {
         $form = $this->createForm(new ContactType);
 
-        if ($request->getMethod() == 'POST')
-        {
+        if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
 
-            if ($form->isValid())
-            {
+            if ($form->isValid()) {
                 $this->get('session')->getFlashBag()->add(
                     'notice',
-                    'Dziękujemy! Twoja wiadomość zostanie zaraz przeczytana i odpiszemy tak szybko jak się nam uda :)'
+                    'Dziękujemy! Twoja wiadomość zostanie zaraz przeczytana'
+                    . ' i odpiszemy tak szybko jak się nam uda :)'
                 );
                 
                 /**
@@ -88,7 +86,7 @@ class DefaultController extends Controller
                     ->setTo("some@email.com")
                     ->setFrom($form->get("email")->getData())
                     ->setBody(
-                        $this->renderView("::contactMessage.html.twig",array(
+                        $this->renderView("::contactMessage.html.twig", array(
                             "message" => $form->get("message")->getData(),
                             "email" => $form->get("email")->getData()
                         )),
@@ -103,5 +101,4 @@ class DefaultController extends Controller
             "form" => $form->createView()
         );
     }
-
 }

@@ -7,39 +7,37 @@ use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Doctrine\Common\DataFixtures\Loader;
 
-class FixtureLoader {
+class FixtureLoader
+{
 
     private $entityManager;
     private $dataFixturesLoader;
 
-    public function __construct(EntityManager $entityManager, Loader $dataFixturesLoader) {
+    public function __construct(EntityManager $entityManager, Loader $dataFixturesLoader)
+    {
         $this->entityManager = $entityManager;
         $this->dataFixturesLoader = $dataFixturesLoader;
     }
 
-    public function load($dirOrFile, $append = false, $purgeMode = ORMPurger::PURGE_MODE_DELETE) {
-        if ($dirOrFile)
-        {
+    public function load($dirOrFile, $append = false, $purgeMode = ORMPurger::PURGE_MODE_DELETE)
+    {
+        if ($dirOrFile) {
             $paths = is_array($dirOrFile) ? $dirOrFile : array($dirOrFile);
-        }
-        else
-        {
+        } else {
             $paths = array();
         }
 
         foreach ($paths as $path) {
-            if (is_dir($path))
-            {
+            if (is_dir($path)) {
                 $this->dataFixturesLoader->loadFromDirectory($path);
             }
         }
 
         $fixtures = $this->dataFixturesLoader->getFixtures();
 
-        if (!$fixtures)
-        {
+        if (!$fixtures) {
             throw new \InvalidArgumentException(
-            sprintf('Could not find any fixtures to load in: %s', "\n\n- " . implode("\n- ", $paths))
+                sprintf('Could not find any fixtures to load in: %s', "\n\n- " . implode("\n- ", $paths))
             );
         }
 
@@ -49,5 +47,4 @@ class FixtureLoader {
 
         $executor->execute($fixtures, $append);
     }
-
 }

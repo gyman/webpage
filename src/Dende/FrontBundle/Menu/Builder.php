@@ -39,7 +39,7 @@ class Builder extends ContainerAware
         $menu->addChild("menu.label.contact", array('route' => "frontpage_contact"))
             ->setExtra('translation_domain', 'FrontBundle');
         
-        if($this->isLogged()) {
+        if ($this->isLogged()) {
             $menu->addChild("menu.label.your_account", array('route' => "fos_user_profile_show"))
                 ->setExtra('translation_domain', 'FrontBundle');
         } else {
@@ -47,7 +47,7 @@ class Builder extends ContainerAware
                 ->setExtra('translation_domain', 'FrontBundle');
         }
         
-        if($this->isLogged()) {
+        if ($this->isLogged()) {
             $menu->addChild("menu.label.logout", array('route' => "fos_user_security_logout"))
                 ->setExtra('translation_domain', 'FrontBundle');
         } else {
@@ -63,5 +63,4 @@ class Builder extends ContainerAware
         $securityContext = $this->container->get('security.context');
         return $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED');
     }
-    
 }

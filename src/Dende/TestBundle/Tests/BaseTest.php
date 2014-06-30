@@ -5,19 +5,20 @@ namespace Dende\TestBundle\Tests;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Dende\TestBundle\Traits\SetupTrait;
 
-class BaseTest extends WebTestCase {
+class BaseTest extends WebTestCase
+{
 
     use SetupTrait;
     
     /**
      *
-     * @var Client 
+     * @var Client
      */
     protected $client;
     
     /**
      *
-     * @var Crawler 
+     * @var Crawler
      */
     protected $crawler;
     
@@ -53,7 +54,7 @@ class BaseTest extends WebTestCase {
     
     protected function assertPageResponseCode($code = 200)
     {
-        $this->assertEquals($code,$this->client->getResponse()->getStatusCode());
+        $this->assertEquals($code, $this->client->getResponse()->getStatusCode());
     }
     
     protected function getPage($uri)
@@ -76,5 +77,4 @@ class BaseTest extends WebTestCase {
             $root . "/src/Dende/TestBundle/DataFixtures/ORM"
         ]);
     }
-    
 }
