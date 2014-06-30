@@ -22,3 +22,8 @@ swiftmailer:
 
 front:
     testing_url: %testing_url%
+    
+doctrine:
+    dbal:
+        user:     test
+        password: test.123
