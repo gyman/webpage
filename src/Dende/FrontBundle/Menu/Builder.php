@@ -30,7 +30,7 @@ class Builder extends ContainerAware
 //        $menu->addChild("menu.label.blog", array('route' => "frontpage_index"))
 //            ->setExtra('translation_domain', 'FrontBundle');
         
-        $menu->addChild("menu.label.demo_app", array('route' => "frontpage_index"))
+        $menu->addChild("menu.label.demo_app", array('uri' => "http://app.gyman.pl"))
             ->setExtra('translation_domain', 'FrontBundle');
         
 //        $menu->addChild('menu.label.download', array('route' => "frontpage_download"))
