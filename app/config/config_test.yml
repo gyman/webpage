@@ -1,8 +1,12 @@
+parameters:
+    testing_url: gyman.local
+
 imports:
     - { resource: config_dev.yml }
 
 framework:
-    test: ~
+    translator:      false
+    test:            true
     session:
         storage_id: session.storage.mock_file
     profiler:
@@ -15,3 +19,6 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+front:
+    testing_url: %testing_url%

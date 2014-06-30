@@ -94,3 +94,4 @@ knp_menu:
 front:
     download_link:  %download_link%
     github_link:    %github_link%
+    testing_url:    ~

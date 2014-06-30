@@ -32,5 +32,8 @@ monolog:
 assetic:
     use_controller: %use_assetic_controller%
 
+front:
+    testing_url: gyman.local
+
 #swiftmailer:
 #    delivery_address: me@example.com

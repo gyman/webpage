@@ -27,8 +27,8 @@ class Builder extends ContainerAware
         $menu->addChild('menu.label.description', array('route' => "frontpage_index"))
             ->setExtra('translation_domain', 'FrontBundle');
         
-        $menu->addChild("menu.label.blog", array('route' => "frontpage_index"))
-            ->setExtra('translation_domain', 'FrontBundle');
+//        $menu->addChild("menu.label.blog", array('route' => "frontpage_index"))
+//            ->setExtra('translation_domain', 'FrontBundle');
         
         $menu->addChild("menu.label.demo_app", array('route' => "frontpage_index"))
             ->setExtra('translation_domain', 'FrontBundle');
@@ -39,9 +39,14 @@ class Builder extends ContainerAware
         $menu->addChild("menu.label.contact", array('route' => "frontpage_contact"))
             ->setExtra('translation_domain', 'FrontBundle');
         
-        $menu->addChild("menu.label.pricing", array('route' => "frontpage_pricing"))
-            ->setExtra('translation_domain', 'FrontBundle');
-
+        if($this->isLogged()) {
+            $menu->addChild("menu.label.your_account", array('route' => "fos_user_profile_show"))
+                ->setExtra('translation_domain', 'FrontBundle');
+        } else {
+            $menu->addChild("menu.label.pricing", array('route' => "frontpage_pricing"))
+                ->setExtra('translation_domain', 'FrontBundle');
+        }
+        
         if($this->isLogged()) {
             $menu->addChild("menu.label.logout", array('route' => "fos_user_security_logout"))
                 ->setExtra('translation_domain', 'FrontBundle');

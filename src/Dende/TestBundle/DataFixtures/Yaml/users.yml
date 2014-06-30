@@ -1,0 +1,5 @@
+user-uirapuru:
+    username:       uirapuru
+    email:          uirapuru@tlen.pl
+    plainPassword:  123
+    enabled:        true
