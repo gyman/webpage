@@ -3,11 +3,11 @@
 <project name="gyman" default="prepare">
 
     <target name="phpcs" description="php code sniffer">
-        <exec command="${project.basedir}/bin/phpcs --standard=${project.basedir}/app/phpcs.xml ${project.basedir}/src/" checkreturn="true" passthru="true" />
+        <exec command="bin/phpcs --standard=app/phpcs.xml src/" checkreturn="true" passthru="true" />
     </target>
 
     <target name="phpcbf" description="php code beautifier and fixer">
-        <exec command="${project.basedir}/bin/phpcbf -p --encoding=utf8 --standard=${project.basedir}/app/phpcs.xml ${project.basedir}/src/" checkreturn="true" passthru="true" />
+        <exec command="bin/phpcbf -p --encoding=utf8 --standard=app/phpcs.xml src/" checkreturn="true" passthru="true" />
     </target>
 
     <target name="test-phplint" description="linting phpfiles">
