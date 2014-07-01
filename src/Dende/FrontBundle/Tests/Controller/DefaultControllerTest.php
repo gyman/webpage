@@ -2,9 +2,7 @@
 
 namespace Dende\FrontBundle\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Dende\TestBundle\Tests\BaseTest;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class DefaultControllerTest extends BaseTest
 {
@@ -80,14 +78,14 @@ class DefaultControllerTest extends BaseTest
      */
     public function testContact($address, $message, $notice, $count)
     {
-        $this->crawlerIsSettedUp();
+        $this->clientIsSettedUp();
+        $this->getPage('/contact');
         $this->contactFormWasSubmitted($address, $message);
         $this->thenIseeNotice($notice);
-
-        $this->mailCollector = $this->client->getProfile()->getCollector('swiftmailer');
-
         $this->thenMessageBeenSent($address, $count);
     }
+    
+// <editor-fold defaultstate="collapsed" desc="dataProviders">
 
     public function testContactDataProvider()
     {
@@ -95,37 +93,37 @@ class DefaultControllerTest extends BaseTest
             array(
                 "address" => "uirapuru@tlen.pl",
                 "message" => "some message for testing",
-                "notice"  => "Dziękujemy! Twoja wiadomość zostanie zaraz przeczytana",
+                "notice"  => "contact.thank_you_message",
                 "count"   => 1
             ),
             array(
                 "address" => "uirapuru",
                 "message" => "some message for testing",
-                "notice"  => "Nieprawidłowy adres email.",
+                "notice"  => "contact.wrong_email",
                 "count"   => 0
             ),
             array(
                 "address" => "",
                 "message" => "some message for testing",
-                "notice"  => "Musisz podać email!",
+                "notice"  => "contact.empty_email",
                 "count"   => 0
             ),
             array(
                 "address" => "uirapuru@tlen.pl",
                 "message" => "",
-                "notice"  => "Musisz podać treść wiadomości!",
+                "notice"  => "contact.empty_message",
                 "count"   => 0
             ),
             array(
                 "address" => "uirapuru@tlen.pl",
                 "message" => "123",
-                "notice"  => "Wiadomość jest zbyt krótka, powinna zawierać conajmniej 10 znaków",
+                "notice"  => "contact.too_short_message",
                 "count"   => 0
             ),
             array(
                 "address" => "uirapuru@tlen.pl",
-                "message" => str_repeat("abcde", 300),
-                "notice"  => "Wiadomość jest zbyt długa, powinna zawierać maksymalnie 1000 znaków",
+                "message" => str_repeat("abcde ", 300),
+                "notice"  => "contact.too_long_message",
                 "count"   => 0
             ),
         );
@@ -156,10 +154,14 @@ class DefaultControllerTest extends BaseTest
                 'notice'    => 'fos_user.password.mismatch'
             ),
         );
-    }
+    }// </editor-fold>
+
+// <editor-fold defaultstate="collapsed" desc="assertions">
 
     private function thenMessageBeenSent($address, $count)
     {
+        $this->mailCollector = $this->client->getProfile()->getCollector('swiftmailer');
+        
         $this->assertEquals($count, $this->mailCollector->getMessageCount());
 
         if ($count == 1) {
@@ -168,7 +170,6 @@ class DefaultControllerTest extends BaseTest
 
             // Asserting e-mail data
             $this->assertInstanceOf('Swift_Message', $message);
-            $this->assertEquals("Formularz kontaktowy - GyMan.pl", $message->getSubject());
             $this->assertEquals($address, key($message->getFrom()));
             $this->assertEquals("some@email.com", key($message->getTo()));
             $this->assertContains(
@@ -185,7 +186,7 @@ class DefaultControllerTest extends BaseTest
 
     private function contactFormWasSubmitted($address, $message)
     {
-        $form = $this->crawler->selectButton('Wyślij')->form();
+        $form = $this->crawler->selectButton('contact.form.labels.submit')->form();
 
         $form['contact_form[email]'] = $address;
         $form['contact_form[message]'] = $message;
@@ -213,5 +214,5 @@ class DefaultControllerTest extends BaseTest
         $form['dende_registration_form[email]'] = $email;
 
         $this->crawler = $this->client->submit($form);
-    }
+    }// </editor-fold>
 }

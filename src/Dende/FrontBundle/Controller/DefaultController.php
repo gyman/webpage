@@ -73,27 +73,18 @@ class DefaultController extends Controller
             if ($form->isValid()) {
                 $this->get('session')->getFlashBag()->add(
                     'notice',
-                    'Dziękujemy! Twoja wiadomość zostanie zaraz przeczytana'
-                    . ' i odpiszemy tak szybko jak się nam uda :)'
+                    $this->get("translator")->trans("contact.thank_you_message")
                 );
                 
-                /**
-                 * @var $mailer \Swift_Mailer
-                 */
-                $mailer = $this->get("mailer");
-                $message = $mailer->createMessage();
-                $message->setSubject("Formularz kontaktowy - GyMan.pl")
-                    ->setTo("some@email.com")
-                    ->setFrom($form->get("email")->getData())
-                    ->setBody(
-                        $this->renderView("::contactMessage.html.twig", array(
-                            "message" => $form->get("message")->getData(),
-                            "email" => $form->get("email")->getData()
-                        )),
-                        'text/html'
-                    );
-                
-                $mailer->send($message);
+                $mailer = $this->get("mailer.contact");
+                $mailer->setParameters(array(
+                    "message" => $form->get("message")->getData(),
+                    "email" => $form->get("email")->getData()
+                ));
+                $mailer->setFrom(
+                    $form->get("email")->getData()
+                );
+                $mailer->sendMail();
             }
         }
         

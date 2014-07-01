@@ -22,19 +22,6 @@ class BaseTest extends WebTestCase
      */
     protected $crawler;
     
-    
-    protected function crawlerIsSettedUp()
-    {
-        $url = $this->getContainer()->getParameter("testing_url");
-        
-        $this->client = static::createClient(array(
-                    'HTTP_HOST'   => $url,
-                    'SERVER_NAME' => $url
-        ));
-        $this->client->enableProfiler();
-        $this->crawler = $this->client->request('GET', '/contact');
-    }
-    
     protected function clientIsSettedUp()
     {
         $url = "http://" . $this->getContainer()->getParameter("testing_url");

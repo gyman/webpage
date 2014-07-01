@@ -5,7 +5,7 @@
         <article class="content">
             <header class="page-header">
                 <div class="container">
-                    <h1 class="title">Napisz do nas</h1>
+                    <h1 class="title">{{ 'contact.captions.contact_us'|trans }}</h1>
                 </div>	
             </header>
 
@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6 contact-info bottom-padding">
                         <p>
-                            Skorzystaj z formularza po prawej i napisz do nas wiadomość.                            
+                           {{ 'contact.captions.use_the_form'|trans }}
                         </p>
                     </div>
                     <div class="col-sm-6 col-md-6 bottom-padding login-register">
@@ -27,7 +27,7 @@
                             }
                         }) }}
                         
-                            <h3 class="title">Napisz wiadomość</h3>
+                            <h3 class="title">{{ 'contact.form.header'|trans }}</h3>
                                 
                             {% set notice = app.session.flashbag.get('notice') %}
                             
@@ -51,7 +51,6 @@
                                         <li>{{ error.message }}</li>
                                     {% endfor %}
                                 </ul>
-                                
                             </div>
                             {% endif %}
 
@@ -61,11 +60,6 @@
                                     {{ form_widget(field,{
                                         "attr" : {"class":"form-control"}
                                     }) }}
-{#                                    <div class="help-block">
-                                        {% for error in field.vars.errors %}
-                                            {{ error.message }}<br />                                        
-                                        {% endfor %}
-                                    </div>#}
                                 </div>
                             {% endfor %}
                             
@@ -74,9 +68,8 @@
                             <div class="buttons-box clearfix">
                                 {{ form_widget(form.submit,{
                                     "attr" : {"class":"btn btn-default"},
-                                    "label" : "Wyślij"
                                 }) }}
-                                <span class="required"><b>*</b> pole wymagane</span>
+                                <span class="required"><b>*</b> {{ 'contact.form.required_field'|trans }}</span>
                             </div><!-- .buttons-box -->
                             
                         {{ form_rest(form) }}

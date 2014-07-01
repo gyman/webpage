@@ -5,8 +5,8 @@ imports:
     - { resource: config_dev.yml }
 
 framework:
-    translator:      false
-    test:            true
+    translator:    false
+    test:          true
     session:
         storage_id: session.storage.mock_file
     profiler:
