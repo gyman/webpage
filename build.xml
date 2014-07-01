@@ -45,6 +45,8 @@
                 <fail message="Cannot reset-db on prod environment!!!" />
             </then>
         </if>
+        <echo>Clearing cache - ${env} environment</echo>
+        <exec command="php app/console cache:clear --env=${env}" checkreturn="true" passthru="true" />
         <echo>Dropping database - ${env} environment</echo>
         <exec command="php app/console doctrine:schema:drop --env=${env} --force --no-interaction" checkreturn="true" passthru="true" />
         <echo>Creating new schema - ${env} environment</echo>
