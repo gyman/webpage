@@ -97,6 +97,10 @@ class RegisteredUserSubscriber implements EventSubscriberInterface
         $user = $event->getUser();
         $subscriptionType = $this->session->get("subscription_type");
 
+        if (!$subscriptionType) {
+            return;
+        }
+        
         $subscription = $this->subscriptionFactory->createSubscription($subscriptionType, array(
             "user" => $user,
             "startDate" => new \DateTime,

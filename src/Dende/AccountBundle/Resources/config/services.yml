@@ -4,3 +4,10 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: dende_user_registration }
+
+    account_bundle.registered_user_subscriber:
+        class: Dende\AccountBundle\Service\Subscriber\RegisteredUserSubscriber
+        calls:
+            - [setRouter,["@router"]]
+        tags:
+            - { name: kernel.event_subscriber }

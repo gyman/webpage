@@ -65,6 +65,7 @@ class DefaultController extends Controller
     public function registerAction(Request $request, $type)
     {
         $request->getSession()->set("subscription_type", $type);
+        
         return $this->redirect(
             $this->generateUrl("fos_user_registration_register")
         );

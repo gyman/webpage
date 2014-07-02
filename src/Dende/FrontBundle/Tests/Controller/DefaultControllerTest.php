@@ -50,12 +50,12 @@ class DefaultControllerTest extends BaseTest
         $this->clientIsSettedUp();
         $this->fixturesAreLoaded();
 
-        $this->getPage("/register");
+        $this->getPage("/register/monthly");
         $this->assertPageResponseCode(200);
 
         $this->registerFormWasSubmitted('uirapuru345', '123', '123', 'uirapuru345@tlen.pl');
         $this->assertPageResponseCode(200);
-        $this->assertPageContainsText('registration.confirmed');
+        $this->assertPageContainsText('profile.show.username: uirapuru345');
     }
 
     /**
@@ -66,7 +66,7 @@ class DefaultControllerTest extends BaseTest
         $this->clientIsSettedUp();
         $this->fixturesAreLoaded();
 
-        $this->getPage("/register");
+        $this->getPage("/register/monthly");
         $this->assertPageResponseCode(200);
 
         $this->registerFormWasSubmitted($username, $password1, $password2, $email);
