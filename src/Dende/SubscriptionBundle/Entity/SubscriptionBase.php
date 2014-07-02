@@ -17,7 +17,7 @@ use Dende\AccountBundle\Entity\User;
  * @ORM\Table(name="subscriptions")
  * @ORM\Entity()
  */
-abstract class SubscriptionBase
+class SubscriptionBase
 {
     /**
      * @var integer
