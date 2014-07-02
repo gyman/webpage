@@ -1,0 +1,13 @@
+services:
+    registered_user_subscriber:
+        class: Dende\SubscriptionBundle\Service\Subscriber\RegisteredUserSubscriber
+        calls:
+            - [setEntityManager,["@doctrine.orm.entity_manager"]]
+            - [setSession,["@session"]]
+            - [setSubscriptionFactory,["@subscription_factory"]]
+        tags:
+            - { name: kernel.event_subscriber }
+            
+    subscription_factory:
+        class: Dende\SubscriptionBundle\Entity\SubscriptionFactory
+        

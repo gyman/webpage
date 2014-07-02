@@ -1,3 +1,8 @@
+subscription:
+    resource: "@SubscriptionBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 mailer:
     resource: "@MailerBundle/Controller/"
     type:     annotation

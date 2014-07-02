@@ -2,6 +2,10 @@
 
 <project name="gyman" default="prepare">
 
+    <target name="phpmd" description="php mess detector">
+        <exec command="bin/phpmd src/ text app/phpmd.xml" checkreturn="true" passthru="true" />
+    </target>
+
     <target name="phpcs" description="php code sniffer">
         <exec command="bin/phpcs --standard=app/phpcs.xml src/" checkreturn="true" passthru="true" />
     </target>
@@ -44,6 +48,15 @@
             <then>
                 <fail message="Cannot reset-db on prod environment!!!" />
             </then>
+            <elseif>
+                <not>
+                    <isset property="env" />
+                </not>
+                <then>
+                    <echo>Setting to default environment (dev)</echo>
+                    <property name="env" value="dev" />
+                </then>
+            </elseif>
         </if>
         <echo>Clearing cache - ${env} environment</echo>
         <exec command="php app/console cache:clear --env=${env}" checkreturn="true" passthru="true" />
@@ -68,6 +81,7 @@
         <phingcall target="test-phplint" />
         <phingcall target="test-twiglint" />
         <phingcall target="phpcs" />
+        <phingcall target="phpmd" />
         <phingcall target="test-phpunit" />
     </target>
 

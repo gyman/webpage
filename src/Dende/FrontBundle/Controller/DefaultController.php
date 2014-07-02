@@ -57,6 +57,18 @@ class DefaultController extends Controller
     {
         return array();
     }
+
+    /**
+     * @Route("/register/{type}",name="frontpage_register")
+     * @Template()
+     */
+    public function registerAction(Request $request, $type)
+    {
+        $request->getSession()->set("subscription_type", $type);
+        return $this->redirect(
+            $this->generateUrl("fos_user_registration_register")
+        );
+    }
     
     /**
      * @Route("/contact",name="frontpage_contact")
