@@ -81,7 +81,7 @@
         <phingcall target="test-phplint" />
         <phingcall target="test-twiglint" />
         <phingcall target="phpcs" />
-        <phingcall target="phpmd" />
+        <!-- phingcall target="phpmd" / -->
         <phingcall target="test-phpunit" />
     </target>
 
