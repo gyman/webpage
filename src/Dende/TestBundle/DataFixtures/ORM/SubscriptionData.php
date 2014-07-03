@@ -7,13 +7,8 @@ use Dende\SubscriptionBundle\Entity\SubscriptionFactory;
 
 class SubscriptionData extends BaseFixture
 {
-
-    /**
-     *
-     * @var SubscriptionFactory $factory 
-     */
+    /** @var SubscriptionFactory $factory */
     protected $factory;
-    protected $fixtureFile = '/../Yaml/subscriptions.yml';
 
     public function load(\Doctrine\Common\Persistence\ObjectManager $manager)
     {
@@ -26,13 +21,16 @@ class SubscriptionData extends BaseFixture
         return 2;
     }
 
-    private function insert($params)
+    public function insert($params)
     {
         $subscription = $this->factory->createSubscription($params["type"], array(
             "user"      => $this->getReference($params["user"]),
             "startDate" => new \DateTime($params["startDate"]),
             "endDate"   => new \DateTime($params["endDate"]),
         ));
+        
+        $this->manager->persist($subscription);
+        $this->manager->flush();
 
         return $subscription;
     }

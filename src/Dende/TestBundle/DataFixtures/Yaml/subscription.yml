@@ -1,9 +1,9 @@
-user-uirapuru-subscription-monthly:
+user-uirapuru-subscription-monthly-01:
     startDate:  yesterday
     endDate:    +1 month
     user:       user-uirapuru
     type:       monthly
-user-uirapuru-subscription-monthly:
+user-uirapuru-subscription-monthly-02:
     startDate:  +1 month
     endDate:    +2 months
     user:       user-uirapuru

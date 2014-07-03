@@ -7,17 +7,6 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 
 class Builder extends ContainerAware
 {
-
-    private $navigationItems = [
-        "menu.label.description" => "frontpage_index",
-        "menu.label.blog" => "frontpage_index",
-        "menu.label.demo_app" => "frontpage_index",
-        "menu.label.download" => "frontpage_download",
-        "menu.label.pricing" => "frontpage_pricing",
-        "menu.label.contact" => "frontpage_contact",
-        "menu.label.login" => "fos_user_security_login",
-    ];
-    
     public function navigation(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
@@ -40,7 +29,7 @@ class Builder extends ContainerAware
             ->setExtra('translation_domain', 'FrontBundle');
         
         if ($this->isLogged()) {
-            $menu->addChild("menu.label.your_account", array('route' => "fos_user_profile_show"))
+            $menu->addChild("menu.label.your_account", array('route' => "profile_dashboard"))
                 ->setExtra('translation_domain', 'FrontBundle');
         } else {
             $menu->addChild("menu.label.pricing", array('route' => "frontpage_pricing"))

@@ -18,3 +18,11 @@ account.login.label.password: 'Hasło'
 account.login.label.submit: 'Zaloguj się'
 account.login.required_info: 'pole jest wymagane'
 account.login.remember_me: 'Zapamiętaj mnie'
+
+profile.title.your_profile: "Twoje konto"
+
+profile_menu.label.dashboard:       Profil
+profile_menu.label.orders:          Kupione subskrypcje
+profile_menu.label.account:         Konto
+profile_menu.label.invoice_data:    Faktury
+profile_menu.label.buy_subscription:    Przedłuż abonament
