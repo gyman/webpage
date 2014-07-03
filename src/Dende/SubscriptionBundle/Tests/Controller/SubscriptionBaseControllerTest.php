@@ -6,9 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class SubscriptionBaseControllerTest extends WebTestCase
 {
-    /*
     public function testCompleteScenario()
     {
+        $this->markTestIncomplete();
+        return;
+        
         // Create a new client to browse the application
         $client = static::createClient();
 
@@ -50,6 +52,4 @@ class SubscriptionBaseControllerTest extends WebTestCase
         // Check the entity has been delete on the list
         $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
     }
-
-    */
 }

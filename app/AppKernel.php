@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Dende\TestBundle\TestBundle(),
             new Dende\MailerBundle\MailerBundle(),
             new Dende\SubscriptionBundle\SubscriptionBundle(),
+            new Dende\AdminBundle\AdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

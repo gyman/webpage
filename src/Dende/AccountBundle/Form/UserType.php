@@ -12,7 +12,8 @@ class UserType extends BaseType
     
     private $class = 'Dende\AccountBundle\Entity\User';
     
-    public function __construct() {
+    public function __construct()
+    {
         return parent::__construct($this->class);
     }
     

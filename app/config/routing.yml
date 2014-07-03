@@ -1,3 +1,8 @@
+admin:
+    resource: "@AdminBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 subscription:
     resource: "@SubscriptionBundle/Controller/"
     type:     annotation
