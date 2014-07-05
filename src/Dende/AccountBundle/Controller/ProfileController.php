@@ -28,8 +28,9 @@ class ProfileController extends Controller
     public function ordersAction()
     {
         return array(
-                // ...
-            );    }
+                "data" => array()
+            );
+    }
 
     /**
      * @Route("/account", name="profile_account")
@@ -41,10 +42,10 @@ class ProfileController extends Controller
                 // ...
             );    }
     /**
-     * @Route("/invoice-data", name="profile_invoice_data")
+     * @Route("/invoices", name="profile_invoices")
      * @Template()
      */
-    public function invoiceDataAction()
+    public function invoicesAction()
     {
         return array(
                 // ...

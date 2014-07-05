@@ -29,6 +29,8 @@ class User extends BaseUser
      */
     protected $id;
 
+    
+    
     /**
      * @ORM\OneToMany(
      *  targetEntity="Dende\SubscriptionBundle\Entity\SubscriptionBase",

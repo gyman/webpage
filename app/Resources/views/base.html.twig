@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="pl">
 <head>
   <title>{% block title %}GyMan.pl - proste zarządzanie klubami sportowym{% endblock %}</title>
   <meta class="viewport" name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,28 +12,26 @@
 </head>
 
 {% block overraid_body %}
-<body class="fixed-header">
-    <div class="page-box">
-        <div class="page-box-content">
+<body class="fixed-header hidden-top">
+<div class="page-box">
+<div class="page-box-content">
+{% include("::authorizedHeader.html.twig") %}
+{% include("::header.html.twig") %}
 
-            {% include("::header.html.twig") %}
+{% block main %}
+<section id="main">
+  <article class="content">
+      {% block body %}{% endblock %}
+  </article>
+</section><!-- #main -->
+{% endblock main %}
 
-            {% block main %}
-            <section id="main">
-              <article class="content">
-                  {% block body %}{% endblock %}
-              </article>
-            </section><!-- #main -->
-            {% endblock main %}
+</div><!-- .page-box-content -->
+</div><!-- .page-box -->
 
-        </div><!-- .page-box-content -->
-    </div><!-- .page-box -->
-
-    {% include "::footer.html.twig" %}
-    {% include ("::javascripts.html.twig") %}
-
+{% include "::footer.html.twig" %}
+{% include ("::javascripts.html.twig") %}
 
 </body>
 {% endblock overraid_body %}
-
 </html>
