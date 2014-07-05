@@ -27,9 +27,16 @@ class ProfileController extends Controller
      */
     public function ordersAction()
     {
+        $paginator = $this->get("knp_paginator");
+        $pagination = $paginator->paginate(
+            $this->getUser()->getSubscriptions(),
+            $this->get('request')->query->get('page', 1),
+            10
+        );
+        
         return array(
-                "data" => array()
-            );
+            "pagination" => $pagination
+        );
     }
 
     /**
