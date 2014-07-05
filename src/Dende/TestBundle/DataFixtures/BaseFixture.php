@@ -37,9 +37,9 @@ class BaseFixture extends AbstractFixture implements OrderedFixtureInterface
     
     public function translateClassToFilename($object)
     {
-        $classnameArray = explode("\\",get_class($object));
+        $classnameArray = explode("\\", get_class($object));
         $class = array_pop($classnameArray);
-        $filename = strtolower(substr($class, 0, strpos($class,"Data"))) . ".yml";
+        $filename = strtolower(substr($class, 0, strpos($class, "Data"))) . ".yml";
         
         return $filename;
     }

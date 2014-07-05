@@ -19,7 +19,8 @@ class ProfileController extends Controller
     {
         return array(
                 // ...
-            );    }
+            );
+    }
 
     /**
      * @Route("/orders", name="profile_orders")
@@ -47,7 +48,8 @@ class ProfileController extends Controller
     {
         return array(
                 // ...
-            );    }
+            );
+    }
     /**
      * @Route("/invoices", name="profile_invoices")
      * @Template()
@@ -56,6 +58,6 @@ class ProfileController extends Controller
     {
         return array(
                 // ...
-            );    }
-
+            );
+    }
 }

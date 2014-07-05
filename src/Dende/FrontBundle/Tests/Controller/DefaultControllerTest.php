@@ -55,7 +55,7 @@ class DefaultControllerTest extends BaseTest
 
         $this->registerFormWasSubmitted('uirapuru345', '123', '123', 'uirapuru345@tlen.pl');
         $this->assertPageResponseCode(200);
-        $this->assertPageContainsText('profile.show.username: uirapuru345');
+        $this->assertPageContainsText('account.title.caption');
     }
 
     /**

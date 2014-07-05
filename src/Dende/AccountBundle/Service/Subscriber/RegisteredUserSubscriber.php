@@ -49,7 +49,7 @@ class RegisteredUserSubscriber implements EventSubscriberInterface
 
     public function onRegistrationCompleted(FormEvent $event)
     {
-        $url = $this->router->generate('fos_user_profile_show');
+        $url = $this->router->generate('profile_dashboard');
         $event->setResponse(new RedirectResponse($url));
     }
 }
