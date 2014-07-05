@@ -2,6 +2,8 @@
 
 {% block title %}{{ "profile.title.orders"|trans }} - {{ parent() }}{% endblock %}
 
+{% block mainCaption %}{{ "orders.title.caption"|trans }}{% endblock %}
+
 {% block content %}
 <div class="my-account">
 <div class="table-responsive">
@@ -9,10 +11,10 @@
         <thead>
               <tr class="first last">
                 <th>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
-                <th>Start date</th>
-                <th>End to</th>
-                <th>Status</th>
-                <th class="text-center">Actions</th>
+                <th>{{ "invoices.table.headers.startDate"|trans }}</th>
+                <th>{{ "invoices.table.headers.endDate"|trans }}</th>
+                <th>{{ "invoices.table.headers.status"|trans }}</th>
+                <th class="text-center">{{ "invoices.table.headers.actions"|trans }}</th>
               </tr>
         </thead>
         <tbody>
@@ -23,10 +25,9 @@
                 <td>{{ subscription.endDate|date("d.m.Y") }}</td>
                 <td class="text-primary"><em>New</em></td>
                 <td class="text-center last">
-                      <div class="btn-group">
-                        <a href="#" class="btn btn-sm btn-info">Info</a>
-                        <a href="#" class="btn btn-sm">Reorder</a>
-                      </div>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-sm">{{ "invoices.table.actions.reorder"|trans }}</a>
+                    </div>
                 </td>
               </tr>
             {% endfor %}
@@ -35,7 +36,7 @@
 </div>
 <div class="pagination-box">
     {{ knp_pagination_render(pagination) }}
-    <i class="pagination-text">total: {{ pagination.getTotalItemCount }} elements</i>
+    <i class="pagination-text">{{ "invoices.table.footer.total_elements"|trans({count : pagination.getTotalItemCount}) }}</i>
 </div>
 </div>
 {% endblock %}

@@ -32,7 +32,7 @@ class ProfileController extends Controller
         $pagination = $paginator->paginate(
             $this->getUser()->getSubscriptions(),
             $this->get('request')->query->get('page', 1),
-            10
+            5
         );
         
         return array(

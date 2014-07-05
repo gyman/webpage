@@ -137,14 +137,14 @@ class DefaultControllerTest extends BaseTest
                 'password1' => '123',
                 'password2' => '123',
                 'email'     => 'uirapuru123@tlen.pl',
-                'notice'    => 'Inny użytkownik używa już tej nazwy'
+                'notice'    => 'user.username_exists'
             ),
             array(
                 "username"  => 'uirapuru123',
                 'password1' => '123',
                 'password2' => '123',
                 'email'     => 'uirapuru@tlen.pl',
-                'notice'    => 'Inny użytkownik używa już tego adresu email'
+                'notice'    => 'user.email_exists'
             ),
             array(
                 "username"  => 'uirapuru123',

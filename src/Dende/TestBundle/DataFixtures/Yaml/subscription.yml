@@ -1,3 +1,98 @@
+user-uirapuru-subscription-monthly-old-19:
+    startDate:  -20 month
+    endDate:    -19 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-18:
+    startDate:  -19 month
+    endDate:    -18 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-17:
+    startDate:  -18 month
+    endDate:    -17 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-16:
+    startDate:  -17 month
+    endDate:    -16 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-15:
+    startDate:  -16 month
+    endDate:    -15 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-14:
+    startDate:  -15 month
+    endDate:    -14 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-13:
+    startDate:  -14 month
+    endDate:    -13 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-12:
+    startDate:  -13 month
+    endDate:    -12 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-11:
+    startDate:  -12 month
+    endDate:    -11 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-10:
+    startDate:  -11 month
+    endDate:    -10 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-09:
+    startDate:  -10 month
+    endDate:    -9 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-08:
+    startDate:  -8 month
+    endDate:    -7 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-07:
+    startDate:  -7 month
+    endDate:    -6 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-06:
+    startDate:  -6 month
+    endDate:    -5 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-05:
+    startDate:  -5 month
+    endDate:    -4 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-04:
+    startDate:  -4 month
+    endDate:    -3 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-03:
+    startDate:  -3 month
+    endDate:    -2 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-02:
+    startDate:  -2 month
+    endDate:    -1 month
+    user:       user-uirapuru
+    type:       monthly
+user-uirapuru-subscription-monthly-old-01:
+    startDate:  -1 month
+    endDate:    yesterday
+    user:       user-uirapuru
+    type:       monthly
 user-uirapuru-subscription-monthly-01:
     startDate:  yesterday
     endDate:    +1 month

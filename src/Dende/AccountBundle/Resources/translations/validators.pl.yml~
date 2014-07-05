@@ -1,0 +1,2 @@
+user.email_exists: 'Inny użytkownik używa już tego adresu email'
+user.username_exists: 'Inny użytkownik używa już tej nazwy'

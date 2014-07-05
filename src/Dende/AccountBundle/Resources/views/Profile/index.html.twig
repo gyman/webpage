@@ -2,12 +2,14 @@
 
 {% block title %}{{ "profile.title.your_profile"|trans }} - {{ parent() }}{% endblock %}
 
+{% block mainCaption %}{{ "account.title.caption"|trans }}{% endblock %}
+
 {% block content %}
 <div class="my-account margin-top">
     <div class="row">
           <div class="col-sm-6 col-md-6">
             <div class="title-box">
-                  <h2 class="title">Account Information</h2>
+                <h2 class="title">{{ "profile.dashboard.caption.account"|trans }}</h2>
             </div>
 
             <ul class="list-unstyled">
@@ -32,7 +34,7 @@
 
           <div class="col-sm-6 col-md-6">
             <div class="title-box">
-                  <h2 class="title">Change Password</h2>
+                  <h2 class="title">{{ "profile.dashboard.caption.password"|trans }}</h2>
             </div>
 
             <ul class="list-unstyled">
@@ -56,8 +58,8 @@
           </div>
     </div>
     <div class="buttons-box clearfix">
-          <button class="btn btn-default">Save</button>
-          <span class="required"><b>*</b> Required Field</span>
+          <button class="btn btn-default">{{ "profile.dashboard.form.label.button_save"|trans }}</button>
+          <span class="required"><b>*</b> {{ "profile.dashboard.form.required"|trans }}</span>
     </div>
 </div>
 {% endblock content %}

@@ -12,11 +12,11 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="users")
  * @UniqueEntity(
  *     fields={"email"},
- *     message="Inny użytkownik używa już tego adresu email"
+ *     message="user.email_exists"
  * )
  * @UniqueEntity(
  *     fields={"username"},
- *     message="Inny użytkownik używa już tej nazwy"
+ *     message="user.username_exists"
  * )
  */
 class User extends BaseUser
