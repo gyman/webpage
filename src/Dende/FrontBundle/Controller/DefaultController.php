@@ -25,6 +25,15 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/compare",name="frontpage_compare")
+     * @Template()
+     */
+    public function compareAction()
+    {
+        return array();
+    }
+
+    /**
      * @Route("/error",name="frontpage_error")
      * @Template()
      */

@@ -4,62 +4,67 @@
 
 {% block mainCaption %}{{ "account.title.caption"|trans }}{% endblock %}
 
+{% macro inputWidget(input) %}
+<li>
+    <div class="form-group">
+        <label for="exampleInputEmail1">
+            {{ ("user."~input.vars.label)|trans }} <span class="required">*</span>
+        </label>
+        {{ form_widget(input,{"attr" : { class : "form-control", placeholder : ("user."~input.vars.label)|trans}}) }}
+    </div>
+</li>
+{% endmacro %}
+
 {% block content %}
-<div class="my-account margin-top">
-    <div class="row">
-          <div class="col-sm-6 col-md-6">
-            <div class="title-box">
-                <h2 class="title">{{ "profile.dashboard.caption.account"|trans }}</h2>
+    {{ form_start(form,{action : path("fos_user_profile_edit")}) }}
+    <div class="my-account margin-top">
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="title-box">
+                    <h2 class="title">{{ "profile.dashboard.caption.account"|trans }}</h2>
+                </div>
+
+                <ul class="list-unstyled">
+                    {% for input in [form.firstname, form.lastname, form.username, form.email] %}
+                        {{ _self.inputWidget(input) }}
+                    {% endfor %}
+                </ul>
+
             </div>
 
-            <ul class="list-unstyled">
-                  <li>
-                    <div class="form-group">
-                          <label for="exampleInputEmail1">First Name <span class="required">*</span></label>
-                          <input type="text" class="form-control" placeholder="Mr.">
-                    </div>
-                    <div class="form-group">
-                          <label for="exampleInputEmail1">Last Name <span class="required">*</span></label>
-                          <input type="text" class="form-control" placeholder="Alen">
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-group">
-                          <label for="exampleInputEmail1">Email Address <span class="required">*</span></label>
-                          <input type="email" class="form-control" placeholder="mr-alen@example.com">
-                    </div>
-                  </li>
-            </ul>
-          </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="title-box">
+                    <h2 class="title">{{ "profile.dashboard.caption.password"|trans }}</h2>
+                </div>
 
-          <div class="col-sm-6 col-md-6">
-            <div class="title-box">
-                  <h2 class="title">{{ "profile.dashboard.caption.password"|trans }}</h2>
+                <ul class="list-unstyled">
+                    {% for input in [form.current_password] %}
+                        {{ _self.inputWidget(input) }}
+                    {% endfor %}
+                </ul>
             </div>
+        </div>
+                {#
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="title-box">
+                    <h2 class="title">Dane do faktury</h2>
+                </div>
 
-            <ul class="list-unstyled">
-                  <li>
-                    <div class="form-group">
-                          <label for="exampleInputEmail1">Current Password <span class="required">*</span></label>
-                          <input type="password" class="form-control">
-                    </div>
-                    <div class="form-group">
-                          <label for="exampleInputEmail1">New Password <span class="required">*</span></label>
-                          <input type="password" class="form-control">
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-group">
-                          <label for="exampleInputEmail1">Confirm New Password <span class="required">*</span></label>
-                          <input type="password" class="form-control">
-                    </div>
-                  </li>
-            </ul>
-          </div>
+                <ul class="list-unstyled">
+                    {% for input in [form.invoice.company, form.invoice.nip] %}
+                        {{ _self.inputWidget(input) }}
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+                #}
+        <div class="buttons-box clearfix">
+            <button class="btn btn-default">{{ "profile.dashboard.form.label.button_save"|trans }}</button>
+            <span class="required"><b>*</b> {{ "profile.dashboard.form.required"|trans }}</span>
+        </div>
     </div>
-    <div class="buttons-box clearfix">
-          <button class="btn btn-default">{{ "profile.dashboard.form.label.button_save"|trans }}</button>
-          <span class="required"><b>*</b> {{ "profile.dashboard.form.required"|trans }}</span>
-    </div>
-</div>
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
 {% endblock content %}

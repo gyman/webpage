@@ -5,6 +5,7 @@ namespace Dende\AccountBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Dende\AccountBundle\Form\UserType;
 
 /**
  * @Route("/profile")
@@ -17,9 +18,12 @@ class ProfileController extends Controller
      */
     public function indexAction()
     {
-        return array(
-                // ...
-            );
+//        $form = $this->createForm(new UserType(), $this->getUser());
+//        
+//        return array(
+//            "userForm" => $form->createView()
+//        );
+        return $this->forward("FOSUserBundle:Profile:edit");
     }
 
     /**

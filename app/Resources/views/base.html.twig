@@ -12,10 +12,14 @@
 </head>
 
 {% block overraid_body %}
-<body class="fixed-header hidden-top">
+<body class="fixed-header{% if app.user %} hidden-top{% endif %}">
 <div class="page-box">
 <div class="page-box-content">
-{% include("::authorizedHeader.html.twig") %}
+    
+    {% if app.user %}
+        {% include("::authorizedHeader.html.twig") %}
+    {% endif %}
+    
 {% include("::header.html.twig") %}
 
 {% block main %}

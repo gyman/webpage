@@ -31,5 +31,12 @@ profile.dashboard.caption.password: 'Zmiana hasła'
 profile.dashboard.form.label.button_save: Zapisz
 profile.dashboard.form.required: 'Pole wymagane'
 account.title.caption: 'Dane Twojego konta'
-invoices.title.caption: Wystawione faktury
-orders.title.caption: Kupione subskrypcje
+invoices.title.caption: 'Wystawione faktury'
+orders.title.caption: 'Kupione subskrypcje'
+orders.table.headers.startDate: Rozpoczęcia
+orders.table.headers.endDate: Zakończenie
+orders.table.headers.status: Status
+orders.table.headers.actions: Akcje
+orders.table.actions.reorder: Przedłuż
+orders.table.actions.invoice: Faktura
+orders.table.footer.total_elements: "w sumie: count elementów"

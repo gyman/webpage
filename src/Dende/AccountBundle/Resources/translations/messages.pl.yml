@@ -33,9 +33,10 @@ profile.dashboard.form.required: 'Pole wymagane'
 account.title.caption: 'Dane Twojego konta'
 invoices.title.caption: 'Wystawione faktury'
 orders.title.caption: 'Kupione subskrypcje'
-invoices.table.headers.startDate: Rozpoczęcia
-invoices.table.headers.endDate: Zakończenie
-invoices.table.headers.status: Status
-invoices.table.headers.actions: Akcje
-invoices.table.actions.reorder: Przedłuż
-invoices.table.footer.total_elements: "w sumie: count elementów"
+orders.table.headers.startDate: Rozpoczęcia
+orders.table.headers.endDate: Zakończenie
+orders.table.headers.status: Status
+orders.table.headers.actions: Akcje
+orders.table.actions.reorder: Przedłuż
+orders.table.actions.invoice: Faktura
+orders.table.footer.total_elements: 'w sumie: count elementów'

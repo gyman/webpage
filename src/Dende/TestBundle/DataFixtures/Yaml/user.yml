@@ -1,4 +1,6 @@
 user-uirapuru:
+    firstname:      Grzegorz
+    lastname:       Kaszuba
     username:       uirapuru
     email:          uirapuru@tlen.pl
     plainPassword:  123

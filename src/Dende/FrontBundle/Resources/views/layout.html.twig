@@ -1,5 +1,25 @@
 {% extends '::base.html.twig' %}
 
 {% block main %}
-    {{ parent() }}
-{% endblock main %}
+<div class="breadcrumb-box breadcrumb-none"></div>
+
+<section id="main" class="page ">
+
+    {% if mainCaption is defined %}
+    <header class="page-header">
+      <div class="container">
+        <h1 class="title">{% block mainCaption %}title{% endblock %}</h1>
+      </div>	
+    </header>
+    {% endif %}
+
+    <div class="container">
+        <div class="row">
+          <article class="col-sm-12 col-md-12 content">
+                    {% block content %}{% endblock content %}
+          </article><!-- .content -->
+        </div>
+    </div>
+
+</section><!-- #main -->
+{% endblock %}

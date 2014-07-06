@@ -15,6 +15,8 @@ class UserData extends BaseFixture
     public function insert($params)
     {
         $user = new User();
+        $user->setFirstname($params["firstname"]);
+        $user->setLastname($params["lastname"]);
         $user->setUsername($params["username"]);
         $user->setEmail($params["email"]);
         $user->setRoles($params["roles"]);

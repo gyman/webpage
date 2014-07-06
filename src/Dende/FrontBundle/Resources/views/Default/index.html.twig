@@ -1,6 +1,6 @@
 {% extends "FrontBundle::layout.html.twig" %}
 
-{% block title %}Strona główna - {{ parent() }}{% endblock %}
+{% block title %}{{ "index.page.title"|trans }} - {{ parent() }}{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
@@ -61,11 +61,6 @@
 
 {% block main %}
     {% include("FrontBundle::slider.html.twig") %}
-    {{ parent() }}
-{% endblock main %}
-
-{% block body %}
-
     <!-- opis funkcji -->
     <div class="row">
         <div class="col-md-12">
@@ -117,12 +112,12 @@
         </div>
     </div>
     <!-- opis funkcji -->
+    {{ parent() }}
+{% endblock main %}
 
-    <div class="container">
-        <div class="title-box">
-            <h1 class="title">{{ "frontpage.captions.about_us"|trans }}</h1>
-        </div>
+{% block mainCaption %}{{ "frontpage.captions.about_us"|trans }}{% endblock %}
 
+{% block content %}
         <div class="row">
             <div class="col-sm-6 col-md-6 bottom-padding">
                 <p class="lead"><strong>{{ "frontpage.paragraphs.about_us_1"|trans }}</strong></p>
@@ -133,6 +128,7 @@
                 <div id="screenshots-carousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
 
+                    {# @todo: translate #}
                     {% set screenshots = {
                     1 : { "src" : "add_event.png", "title" : "Dodawanie nowego eventu" },
                     2 : { "src" : "calendar.png", "title" : "Kalendarz" },
@@ -174,8 +170,4 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-
     {% endblock %}

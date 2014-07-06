@@ -4,6 +4,7 @@ namespace Dende\AccountBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -29,8 +30,20 @@ class User extends BaseUser
      */
     protected $id;
 
-    
-    
+    /**
+     * @Assert\NotBlank(message = "user.firstname.field_cannot_be_empty", groups = {"Profile"})
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
+     * @var string $firstname
+     */
+    protected $firstname;
+
+    /**
+     * @Assert\NotBlank(message = "user.lastname.field_cannot_be_empty", groups = {"Profile"})
+     * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
+     * @var string $lastname
+     */
+    protected $lastname;
+
     /**
      * @ORM\OneToMany(
      *  targetEntity="Dende\SubscriptionBundle\Entity\SubscriptionBase",
@@ -42,7 +55,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        
+
         $this->setSubscriptions(new ArrayCollection());
     }
 
@@ -54,6 +67,28 @@ class User extends BaseUser
     public function setSubscriptions($subscriptions)
     {
         $this->subscriptions = $subscriptions;
+        return $this;
+    }
+
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+        return $this;
+    }
+
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
         return $this;
     }
 }
