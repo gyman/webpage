@@ -9,5 +9,5 @@ services:
             - { name: kernel.event_subscriber }
             
     subscription_bundle.subscription_factory:
-        class: Dende\SubscriptionBundle\Entity\SubscriptionFactory
+        class: Dende\SubscriptionBundle\Factory\SubscriptionFactory
         

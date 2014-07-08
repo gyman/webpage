@@ -7,6 +7,7 @@ use Dende\SubscriptionBundle\Entity\SubscriptionBase;
 
 /**
  * @ORM\Entity
+ * @codeCoverageIgnore
  */
 class YearlySubscription extends SubscriptionBase
 {

@@ -11,8 +11,7 @@ use Dende\SubscriptionBundle\Entity\SubscriptionBase;
 use Dende\SubscriptionBundle\Form\SubscriptionBaseType;
 
 /**
- * SubscriptionBase controller.
- *
+ * @codeCoverageIgnore
  * @Route("/admin/subscriptions")
  */
 class SubscriptionBaseController extends Controller

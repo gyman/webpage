@@ -6,6 +6,26 @@ use Dende\TestBundle\Tests\BaseTest;
 
 class ProfileControllerTest extends BaseTest
 {
+    public function testOrdersPage()
+    {
+        $this->fixturesAreLoaded();
+        $this->clientIsSettedUp();
+        $this->userIsLoggedIn("uirapuru", "123");
+        $this->getPage("/profile/orders");
+        
+        $this->assertPageContainsText("orders.title.caption");
+    }
+
+    public function testInvoicesPage()
+    {
+        $this->fixturesAreLoaded();
+        $this->clientIsSettedUp();
+        $this->userIsLoggedIn("uirapuru", "123");
+        $this->getPage("/profile/invoices");
+        
+        $this->assertPageContainsText("invoices.title.caption");
+    }
+    
     /**
      * @dataProvider testUpdateProfileDataProvider
      * @param type $firstname

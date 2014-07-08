@@ -19,6 +19,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *     fields={"username"},
  *     message="user.username_exists"
  * )
+ * @codeCoverageIgnore
  */
 class User extends BaseUser
 {

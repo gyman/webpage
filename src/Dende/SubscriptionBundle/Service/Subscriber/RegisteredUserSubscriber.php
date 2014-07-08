@@ -7,7 +7,7 @@ use FOS\UserBundle\Event\FilterUserResponseEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Dende\SubscriptionBundle\Entity\SubscriptionFactory;
+use Dende\SubscriptionBundle\Factory\SubscriptionFactory;
 
 class RegisteredUserSubscriber implements EventSubscriberInterface
 {
@@ -73,8 +73,8 @@ class RegisteredUserSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param \Dende\SubscriptionBundle\Entity\SubscriptionFactory $subscriptionFactory
-     * @return \Dende\SubscriptionBundle\Service\Subscriber\RegisteredUserSubscriber
+     * @param SubscriptionFactory $subscriptionFactory
+     * @return RegisteredUserSubscriber
      */
     public function setSubscriptionFactory(SubscriptionFactory $subscriptionFactory)
     {

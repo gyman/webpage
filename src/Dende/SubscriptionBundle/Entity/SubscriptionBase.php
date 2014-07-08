@@ -16,6 +16,7 @@ use Dende\AccountBundle\Entity\User;
  * })
  * @ORM\Table(name="subscriptions")
  * @ORM\Entity()
+ * @codeCoverageIgnore
  */
 class SubscriptionBase
 {

@@ -3,14 +3,15 @@
 namespace Dende\TestBundle\DataFixtures\ORM;
 
 use Dende\TestBundle\DataFixtures\BaseFixture;
-use Dende\SubscriptionBundle\Entity\SubscriptionFactory;
+use Dende\SubscriptionBundle\Factory\SubscriptionFactory;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class SubscriptionData extends BaseFixture
 {
     /** @var SubscriptionFactory $factory */
     protected $factory;
 
-    public function load(\Doctrine\Common\Persistence\ObjectManager $manager)
+    public function load(ObjectManager $manager)
     {
         $this->factory = new SubscriptionFactory();
         return parent::load($manager);

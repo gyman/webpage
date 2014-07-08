@@ -4,6 +4,9 @@ namespace Dende\AccountBundle\Model;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * @codeCoverageIgnore
+ */
 class InvoiceData
 {
 

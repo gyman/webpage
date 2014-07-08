@@ -11,6 +11,9 @@ use Dende\AccountBundle\Entity\User;
 use Dende\AccountBundle\Form\UserType;
 
 /**
+ * @codeCoverageIgnore
+ */
+/**
  * User controller.
  *
  * @Route("/admin/users")

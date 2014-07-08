@@ -18,11 +18,6 @@ class ProfileController extends Controller
      */
     public function indexAction()
     {
-//        $form = $this->createForm(new UserType(), $this->getUser());
-//        
-//        return array(
-//            "userForm" => $form->createView()
-//        );
         return $this->forward("FOSUserBundle:Profile:edit");
     }
 
@@ -44,16 +39,6 @@ class ProfileController extends Controller
         );
     }
 
-    /**
-     * @Route("/account", name="profile_account")
-     * @Template()
-     */
-    public function accountAction()
-    {
-        return array(
-                // ...
-            );
-    }
     /**
      * @Route("/invoices", name="profile_invoices")
      * @Template()

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dende\SubscriptionBundle\Entity;
+namespace Dende\SubscriptionBundle\Factory;
 
 class SubscriptionFactory
 {
