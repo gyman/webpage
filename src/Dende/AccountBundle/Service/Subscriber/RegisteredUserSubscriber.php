@@ -25,7 +25,7 @@ class RegisteredUserSubscriber implements EventSubscriberInterface
     private $session;
 
     /**
-     * @var Mailer $mailer 
+     * @var Mailer $mailer
      */
     private $mailer;
     
@@ -60,14 +60,16 @@ class RegisteredUserSubscriber implements EventSubscriberInterface
         return $this;
     }
 
-    public  function getMailer() {
-return $this->mailer;
-}
+    public function getMailer()
+    {
+        return $this->mailer;
+    }
 
-public  function setMailer(Mailer $mailer) {
-$this->mailer = $mailer;
-return $this;
-}
+    public function setMailer(Mailer $mailer)
+    {
+        $this->mailer = $mailer;
+        return $this;
+    }
 
 
     
@@ -108,7 +110,8 @@ return $this;
     private function setFlash()
     {
         $this->session->getFlashBag()->add(
-            'notice', 'user.notice.profile_registered_succesfuly'
+            'notice',
+            'user.notice.profile_registered_succesfuly'
         );
     }
 
