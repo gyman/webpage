@@ -33,9 +33,11 @@
             <input type="checkbox" id="remember_me" name="_remember_me" value="on"> {{ "account.login.remember_me"|trans }}
       </label>
     </div>
+      
         
     <div class="buttons-box clearfix">
       <button name="_submit" type="submit" class="btn btn-default">{{ "account.login.label.submit"|trans }}</button>
+      <a class="forgot" href="{{ path("fos_user_resetting_request") }}">{{ "account.login.password_recovery"|trans }}</a>
       <span class="required"><b>*</b> {{ "account.login.required_info"|trans }}</span>
     </div>
     
