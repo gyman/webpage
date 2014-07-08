@@ -10,6 +10,7 @@ services:
         calls:
             - [setRouter,["@router"]]
             - [setSession,["@session"]]
+            - [setMailer,["@mailer.registration_successful"]]
         tags:
             - { name: kernel.event_subscriber }
 

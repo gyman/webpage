@@ -29,7 +29,7 @@
                         <button data-dismiss="alert" class="close" type="button">×</button>
                         <strong>{{ "user.profile.notice.success"|trans }}</strong>
                         {% for flashMessage in notice %}
-                            <p>{{ flashMessage }}</p>
+                            <p>{{ flashMessage|trans }}</p>
                         {% endfor %}
                     </div>
                 </div>

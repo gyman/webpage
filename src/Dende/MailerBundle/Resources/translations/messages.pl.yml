@@ -1,1 +1,11 @@
 mailing.contact.subject: "[gyman.pl] Formularz kontaktowy"
+
+mailing.registration_successful.subject: "[gyman.pl] Zarejestrowałeś u nas nowe konto"
+mailing.registeredSuccess:
+    para01: Dziękujemy za rejestrację! Wszystko przebiegło w porządku :)
+    para02: Twoje dane dostępowe
+    para03: Zapisz lub wydrukuj te wiadomość.
+    para04: W razie problemów zawsze możesz skorzystać z
+    username: nazwa użytkownika
+    password: hasło
+    link: przypominanie hasła

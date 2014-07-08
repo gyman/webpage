@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Event\FormEvent;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Dende\MailerBundle\Service\Mailer;
 
 class RegisteredUserSubscriber implements EventSubscriberInterface
 {
@@ -23,6 +24,11 @@ class RegisteredUserSubscriber implements EventSubscriberInterface
      */
     private $session;
 
+    /**
+     * @var Mailer $mailer 
+     */
+    private $mailer;
+    
     /**
      *
      * @return type
@@ -54,6 +60,17 @@ class RegisteredUserSubscriber implements EventSubscriberInterface
         return $this;
     }
 
+    public  function getMailer() {
+return $this->mailer;
+}
+
+public  function setMailer(Mailer $mailer) {
+$this->mailer = $mailer;
+return $this;
+}
+
+
+    
     /**
      * {@inheritDoc}
      */
@@ -66,12 +83,38 @@ class RegisteredUserSubscriber implements EventSubscriberInterface
 
     public function onRegistrationCompleted(FormEvent $event)
     {
+        $this->setRedirect($event);
+        $this->setFlash();
+        $this->sendEmail($event);
+    }
+
+    private function sendEmail(FormEvent $event)
+    {
+        $form = $event->getForm();
+        
+        $mailer = $this->getMailer();
+        
+        $mailer->setParameters(array(
+            "password"   => $form->get("plainPassword")->getData(),
+            "username"   => $form->get("username")->getData()
+        ));
+        $mailer->setTo(
+            $form->get("email")->getData()
+        );
+        $mailer->setFrom("uirapuruadg@gmail.com");
+        $mailer->sendMail();
+    }
+
+    private function setFlash()
+    {
+        $this->session->getFlashBag()->add(
+            'notice', 'user.notice.profile_registered_succesfuly'
+        );
+    }
+
+    private function setRedirect(FormEvent $event)
+    {
         $url = $this->router->generate('profile_dashboard');
         $event->setResponse(new RedirectResponse($url));
-        
-        $this->session->getFlashBag()->add(
-            'notice',
-            'user.notice.profile_registered_succesfuly'
-        );
     }
 }

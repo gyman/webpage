@@ -42,5 +42,5 @@ orders.table.actions.invoice: Faktura
 orders.table.footer.total_elements: 'w sumie: count elementów'
 user.form.password: "Nowe hasło"
 user.form.password_confirmation: "Powtórz nowe hasło"
-user.notice.profile_updated_succesfuly: "Profil zaktualizowany!"
+user.profile.notice.success: "Wszystko w porządku!"
 user.notice.profile_registered_succesfuly: "Rejestracja się powiodła!"
