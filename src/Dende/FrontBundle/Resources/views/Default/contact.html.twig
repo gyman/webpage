@@ -35,6 +35,7 @@
                             <div class="alert alert-success fade in ">
                                 <i class="fa fa-exclamation-circle alert-icon"></i>
                                 <button data-dismiss="alert" class="close" type="button">×</button>
+                                <strong>{{ "common.successful"|trans }}</strong>
                                 {% for flashMessage in notice %}
                                     <p>{{ flashMessage }}</p>
                                 {% endfor %}
@@ -45,7 +46,7 @@
                             <div class="alert alert-danger fade in ">
                                 <i class="fa fa-envelope alert-icon"></i>
                                 <button data-dismiss="alert" class="close" type="button">×</button>
-                                <strong>Wystąpiły błędy!</strong>
+                                <strong>{{ "common.there_were_errors"|trans }}</strong>
                                 <ul>
                                     {% for error in form.vars.errors %}
                                         <li>{{ error.message }}</li>

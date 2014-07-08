@@ -34,6 +34,28 @@ class BaseTest extends WebTestCase
         $this->client->followRedirects();
     }
     
+    protected function loginFormWasSubmitted($username, $password)
+    {
+        $form = $this->crawler->filter('button:contains("account.login.label.submit")')->form();
+
+        $form['_username'] = $username;
+        $form['_password'] = $password;
+
+        $this->crawler = $this->client->submit($form);
+    }
+    
+    protected function userIsLoggedIn($user, $pass)
+    {
+        $this->getPage("/login");
+        $this->assertPageContainsText("account.login.header_link_login");
+        $this->assertPageResponseCode(200);
+        
+        $this->loginFormWasSubmitted($user, $pass);
+        
+        $this->assertPageContainsText("account.title.caption");
+        $this->assertPageResponseCode(200);
+    }
+    
     protected function assertPageContainsText($text = '')
     {
         $this->assertTrue($this->crawler->filter('html:contains("'.$text.'")')->count() > 0);

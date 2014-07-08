@@ -194,16 +194,6 @@ class DefaultControllerTest extends BaseTest
         $this->crawler = $this->client->submit($form);
     }
 
-    private function loginFormWasSubmitted($username, $password)
-    {
-        $form = $this->crawler->filter('button:contains("account.login.label.submit")')->form();
-
-        $form['_username'] = $username;
-        $form['_password'] = $password;
-
-        $this->crawler = $this->client->submit($form);
-    }
-
     private function registerFormWasSubmitted($username, $password1, $password2, $email)
     {
         $form = $this->crawler->filter('button:contains("account.register.label.submit")')->form();

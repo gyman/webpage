@@ -2,9 +2,9 @@
 
 namespace Dende\AccountBundle\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Dende\TestBundle\Tests\BaseTest;
 
-class UserControllerTest extends WebTestCase
+class UserControllerTest extends BaseTest
 {
     public function testCompleteScenario()
     {

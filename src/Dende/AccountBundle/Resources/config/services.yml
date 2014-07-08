@@ -9,6 +9,7 @@ services:
         class: Dende\AccountBundle\Service\Subscriber\RegisteredUserSubscriber
         calls:
             - [setRouter,["@router"]]
+            - [setSession,["@session"]]
         tags:
             - { name: kernel.event_subscriber }
 
@@ -16,6 +17,7 @@ services:
         class: Dende\AccountBundle\Service\Subscriber\UpdatedProfileSubscriber
         calls:
             - [setRouter,["@router"]]
+            - [setSession,["@session"]]
         tags:
             - { name: kernel.event_subscriber }
             

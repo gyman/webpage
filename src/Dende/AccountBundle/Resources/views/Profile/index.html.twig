@@ -5,19 +5,54 @@
 {% block mainCaption %}{{ "account.title.caption"|trans }}{% endblock %}
 
 {% macro inputWidget(input) %}
-<li>
-    <div class="form-group">
-        <label for="exampleInputEmail1">
-            {{ ("user."~input.vars.label)|trans }} <span class="required">*</span>
-        </label>
-        {{ form_widget(input,{"attr" : { class : "form-control", placeholder : ("user."~input.vars.label)|trans}}) }}
-    </div>
-</li>
+    <li>
+        <div class="form-group">
+            <label>
+                {{ ("user."~input.vars.label)|trans }} <span class="required">*</span>
+            </label>
+            {{ form_widget(input,{"attr" : { class : "form-control", placeholder : ("user."~input.vars.label)|trans}}) }}
+        </div>
+    </li>
 {% endmacro %}
 
 {% block content %}
     {{ form_start(form,{action : path("fos_user_profile_edit")}) }}
     <div class="my-account margin-top">
+
+        {% set notice = app.session.flashbag.get('notice') %}
+
+        {% if notice|length %}
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="alert alert-success fade in ">
+                        <i class="fa fa-exclamation-circle alert-icon"></i>
+                        <button data-dismiss="alert" class="close" type="button">×</button>
+                        <strong>{{ "user.profile.notice.success"|trans }}</strong>
+                        {% for flashMessage in notice %}
+                            <p>{{ flashMessage }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if form.vars.errors|length %}
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="alert alert-danger fade in ">
+                        <i class="fa fa-envelope alert-icon"></i>
+                        <button data-dismiss="alert" class="close" type="button">×</button>
+                        <strong>{{ "user.profile.there_were_errors"|trans }}</strong>
+                        <ul>
+                            {% for error in form.vars.errors %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
         <div class="row">
             <div class="col-sm-6 col-md-6">
                 <div class="title-box">
@@ -38,28 +73,28 @@
                 </div>
 
                 <ul class="list-unstyled">
-                    {% for input in [form.current_password] %}
-                        {{ _self.inputWidget(input) }}
+                    {% for input in [form.plainPassword.first, form.plainPassword.second] %}
+                        {{ _self.inputWidget(input,{"required" : "off"}) }}
                     {% endfor %}
                 </ul>
             </div>
         </div>
-                {#
-        <div class="row">
-            <div class="col-sm-6 col-md-6">
-                <div class="title-box">
-                    <h2 class="title">Dane do faktury</h2>
-                </div>
-
-                <ul class="list-unstyled">
-                    {% for input in [form.invoice.company, form.invoice.nip] %}
-                        {{ _self.inputWidget(input) }}
-                    {% endfor %}
-                </ul>
-
-            </div>
+        {#
+<div class="row">
+    <div class="col-sm-6 col-md-6">
+        <div class="title-box">
+            <h2 class="title">Dane do faktury</h2>
         </div>
-                #}
+
+        <ul class="list-unstyled">
+            {% for input in [form.invoice.company, form.invoice.nip] %}
+                {{ _self.inputWidget(input) }}
+            {% endfor %}
+        </ul>
+
+    </div>
+</div>
+        #}
         <div class="buttons-box clearfix">
             <button class="btn btn-default">{{ "profile.dashboard.form.label.button_save"|trans }}</button>
             <span class="required"><b>*</b> {{ "profile.dashboard.form.required"|trans }}</span>

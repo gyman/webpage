@@ -2,6 +2,10 @@
 
 <project name="gyman" default="prepare">
 
+    <property name="php_bin" value="php" />
+    <property name="capifony_bin" value="cap" />
+    <property name="symfony_console" value="app/console" />
+    
     <target name="phpmd" description="php mess detector">
         <exec command="bin/phpmd src/ text app/phpmd.xml" checkreturn="true" passthru="true" />
     </target>
@@ -25,21 +29,30 @@
     </target>
     
     <target name="phplint">
-        <exec command="php -l ${php-file}" checkreturn="true" passthru="true" />
+        <exec command="${php_bin} -l ${php-file}" checkreturn="true" passthru="true" />
     </target>
 
     <target name="test-twiglint">
-        <exec command="php app/console twig:lint app/Resources" checkreturn="true" passthru="true" />
-        <exec command="php app/console twig:lint src" checkreturn="true" passthru="true" />
+        <exec command="${php_bin} ${symfony_console} twig:lint app/Resources" checkreturn="true" passthru="true" />
+        <exec command="${php_bin} ${symfony_console} twig:lint src" checkreturn="true" passthru="true" />
+    </target>
+
+
+    <target name="test-translations">
+        <foreach list="AccountBundle,AdminBundle,FrontBundle,MailerBundle,SubscriptionBundle,TestBundle" param="bundle" target="find-translations" delimiter="," /> 
+    </target>
+
+    <target name="find-translations">
+        <exec command="${php_bin} ${symfony_console} translation:debug --only-missing pl ${bundle}" checkreturn="true" passthru="true" />
     </target>
         
     <target name="deploy-prod">
-        <exec command="cap deploy" checkreturn="true" output="stdout" />
-        <exec command="cap deploy:cleanup" checkreturn="true" output="stdout" />
-        <exec command="cap apache:restart" checkreturn="true" output="stdout" />
-        <exec command="cap symfony:assets:install" checkreturn="true" output="stdout" />
-        <exec command="cap symfony:assetic:dump" checkreturn="true" output="stdout" />
-        <exec command="cap symfony:cache:clear" checkreturn="true" output="stdout" />
+        <exec command="${capifony_bin} deploy" checkreturn="true" output="stdout" />
+        <exec command="${capifony_bin} deploy:cleanup" checkreturn="true" output="stdout" />
+        <exec command="${capifony_bin} apache:restart" checkreturn="true" output="stdout" />
+        <exec command="${capifony_bin} symfony:assets:install" checkreturn="true" output="stdout" />
+        <exec command="${capifony_bin} symfony:assetic:dump" checkreturn="true" output="stdout" />
+        <exec command="${capifony_bin} symfony:cache:clear" checkreturn="true" output="stdout" />
     </target>
       
     <target name="reset-db">
@@ -59,13 +72,13 @@
             </elseif>
         </if>
         <echo>Clearing cache - ${env} environment</echo>
-        <exec command="php app/console cache:clear --env=${env}" checkreturn="true" passthru="true" />
+        <exec command="${php_bin} ${symfony_console} cache:clear --env=${env}" checkreturn="true" passthru="true" />
         <echo>Dropping database - ${env} environment</echo>
-        <exec command="php app/console doctrine:schema:drop --env=${env} --force --no-interaction" checkreturn="true" passthru="true" />
+        <exec command="${php_bin} ${symfony_console} doctrine:schema:drop --env=${env} --force --no-interaction" checkreturn="true" passthru="true" />
         <echo>Creating new schema - ${env} environment</echo>
-        <exec command="php app/console doctrine:schema:create --env=${env} --no-interaction" checkreturn="true" passthru="true"  />
+        <exec command="${php_bin} ${symfony_console} doctrine:schema:create --env=${env} --no-interaction" checkreturn="true" passthru="true"  />
         <echo>Loading fixtures - ${env} environment</echo>
-        <exec command="php app/console doctrine:fixtures:load --env=${env} --no-interaction" checkreturn="true" passthru="true"  />
+        <exec command="${php_bin} ${symfony_console} doctrine:fixtures:load --env=${env} --no-interaction" checkreturn="true" passthru="true"  />
     </target>
    
     <target name="test-phpunit">
