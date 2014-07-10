@@ -4,117 +4,141 @@ namespace Dende\AccountBundle\Tests\Controller;
 
 use Dende\TestBundle\Tests\BaseTest;
 
-class ProfileControllerTest extends BaseTest
+class UserAccountTest extends BaseTest
 {
-    public function testOrdersPage()
+    public function testLogin()
     {
-        $this->fixturesAreLoaded();
         $this->clientIsSettedUp();
-        $this->userIsLoggedIn("uirapuru", "123");
-        $this->getPage("/profile/orders");
-        
-        $this->assertPageContainsText("orders.title.caption");
-    }
+        $this->fixturesAreLoaded();
 
-    public function testInvoicesPage()
+        $this->getPage("/login");
+        $this->assertPageResponseCode(200);
+
+        $this->loginFormWasSubmitted('uirapuru', '1234');
+        $this->assertPageContainsText("Bad credentials");
+
+        $this->loginFormWasSubmitted('uirapuru123', '1234');
+        $this->assertPageContainsText("Bad credentials");
+
+        $this->loginFormWasSubmitted('uirapuru', '123');
+        $this->assertPageResponseCode(200);
+    }
+    public function testRegister()
     {
-        $this->fixturesAreLoaded();
         $this->clientIsSettedUp();
-        $this->userIsLoggedIn("uirapuru", "123");
-        $this->getPage("/profile/invoices");
-        
-        $this->assertPageContainsText("invoices.title.caption");
+        $this->fixturesAreLoaded();
+
+        $this->getPage("/register/monthly");
+        $this->assertPageResponseCode(200);
+
+        $this->registerFormWasSubmitted('uirapuru345', '123', '123', 'uirapuru345@tlen.pl');
+        $this->assertPageResponseCode(200);
+        $this->assertPageContainsText('account.title.caption');
     }
     
     /**
-     * @dataProvider testUpdateProfileDataProvider
-     * @param type $firstname
-     * @param type $lastname
-     * @param type $newPass
-     * @param type $newPassRepeat
-     * @param type $message
-     * @param type $code
+     * @dataProvider testRegisterDataProvider
      */
-    public function testUpdateProfile($firstname, $lastname, $newPass, $newPassRepeat, $message, $code)
+    public function testRegisterErrors($username, $password1, $password2, $email, $notice)
     {
-        $this->fixturesAreLoaded();
         $this->clientIsSettedUp();
-        $this->userIsLoggedIn("uirapuru", "123");
-        
-        $form = $this->crawler->filter('button:contains("profile.dashboard.form.label.button_save")')->form();
-
-        $form['fos_user_profile_form[firstname]'] = $firstname;
-        $form['fos_user_profile_form[lastname]'] = $lastname;
-        $form['fos_user_profile_form[plainPassword][first]'] = $newPass;
-        $form['fos_user_profile_form[plainPassword][second]'] = $newPassRepeat;
-
-        $this->crawler = $this->client->submit($form);
-        
-        $this->assertPageContainsText($message);
-        $this->assertPageResponseCode($code);
-    }
-    public function testUpdateProfileDb()
-    {
         $this->fixturesAreLoaded();
-        $this->clientIsSettedUp();
-        $this->userIsLoggedIn("uirapuru", "123");
-        
-        $form = $this->crawler->filter('button:contains("profile.dashboard.form.label.button_save")')->form();
 
-        $uniqueFirstname = md5(microtime());
-        $uniqueLastname = md5(microtime());
-        
-        $form['fos_user_profile_form[firstname]'] = $uniqueFirstname;
-        $form['fos_user_profile_form[lastname]'] = $uniqueLastname;
-
-        $this->crawler = $this->client->submit($form);
-        
-        $this->assertPageContainsText("user.notice.profile_updated_succesfuly");
+        $this->getPage("/register/monthly");
         $this->assertPageResponseCode(200);
 
-        $entityManager = $this->getContainer()->get("doctrine.orm.entity_manager");
-        $user = $entityManager->createQuery("SELECT u FROM Dende\AccountBundle\Entity\User u WHERE u.username = 'uirapuru'")->getResult();
-        
-        $this->assertEquals($uniqueFirstname, $user[0]->getFirstname());
-        $this->assertEquals($uniqueLastname, $user[0]->getLastname());
-    
+        $this->registerFormWasSubmitted($username, $password1, $password2, $email);
+        $this->assertPageContainsText($notice);
     }
-    public function testUpdateProfileDataProvider()
+
+    public function testResetPassword()
+    {
+        $this->clientIsSettedUp();
+        $this->fixturesAreLoaded();
+
+        $this->getPage("/resetting/request");
+        $this->assertPageResponseCode(200);
+
+        $this->resettingFormWasSubmitted('uirapuru');
+        $this->assertPageResponseCode(200);
+        $this->assertPageContainsText('resetting.check_email');
+        
+        $entityManager = $this->getContainer()->get("doctrine.orm.entity_manager");
+        $query = "SELECT u FROM Dende\AccountBundle\Entity\User u WHERE u.username = 'uirapuru'";
+        $user = $entityManager->createQuery($query)->getSingleResult();
+        
+        $confirmationToken = $user->getConfirmationToken();
+        
+        $this->getPage("/resetting/reset/".md5(time()));
+        $this->assertPageResponseCode(404);
+        
+        $this->getPage("/resetting/reset/".$confirmationToken);
+        $this->assertPageResponseCode(200);
+        
+        $this->newPasswordFormWasSubmitted('123', 'abc');
+        $this->assertPageResponseCode(200);
+        $this->assertPageContainsText('fos_user.password.mismatch');
+        
+        $this->newPasswordFormWasSubmitted('123', '123');
+        $this->assertPageResponseCode(200);
+        $this->assertPageContainsText('user.notice.password_resetted_succesfuly');
+    }
+    
+    public function testRegisterDataProvider()
     {
         return array(
             array(
-                "firstname" => "Grzegorz",
-                "lastname" => "Kaszuba",
-                "newPass" => "123",
-                "newPassRepeat" => "123",
-                "message" => "user.notice.profile_updated_succesfuly",
-                "code" => 200,
+                "username"  => 'uirapuru',
+                'password1' => '123',
+                'password2' => '123',
+                'email'     => 'uirapuru123@tlen.pl',
+                'notice'    => 'user.username_exists'
             ),
             array(
-                "firstname" => "Grzegorz",
-                "lastname" => "Kaszuba",
-                "newPass" => "123",
-                "newPassRepeat" => "345",
-                "message" => "fos_user.password.mismatch",
-                "code" => 200,
+                "username"  => 'uirapuru123',
+                'password1' => '123',
+                'password2' => '123',
+                'email'     => 'uirapuruadg+gymanUirapuru@gmail.com',
+                'notice'    => 'user.email_exists'
             ),
             array(
-                "firstname" => "",
-                "lastname" => "Kaszuba",
-                "newPass" => "123",
-                "newPassRepeat" => "123",
-                "message" => "user.firstname.field_cannot_be_empty",
-                "code" => 200,
+                "username"  => 'uirapuru123',
+                'password1' => '123',
+                'password2' => '1234',
+                'email'     => 'uirapuru123@tlen.pl',
+                'notice'    => 'fos_user.password.mismatch'
             ),
-            array(
-                "firstname" => "Grzegorz",
-                "lastname" => "",
-                "newPass" => "123",
-                "newPassRepeat" => "123",
-                "message" => "user.lastname.field_cannot_be_empty",
-                "code" => 200,
-            ),
-            
         );
+    }
+    
+    private function registerFormWasSubmitted($username, $password1, $password2, $email)
+    {
+        $form = $this->crawler->filter('button:contains("account.register.label.submit")')->form();
+
+        $form['dende_registration_form[username]'] = $username;
+        $form['dende_registration_form[plainPassword][first]'] = $password1;
+        $form['dende_registration_form[plainPassword][second]'] = $password2;
+        $form['dende_registration_form[email]'] = $email;
+
+        $this->crawler = $this->client->submit($form);
+    }
+    
+    private function resettingFormWasSubmitted($username)
+    {
+        $form = $this->crawler->filter('button:contains("resetting.request.submit")')->form();
+
+        $form['username'] = $username;
+
+        $this->crawler = $this->client->submit($form);
+    }
+    
+    private function newPasswordFormWasSubmitted($first, $second)
+    {
+        $form = $this->crawler->filter('button:contains("resetting.reset.submit")')->form();
+
+        $form['fos_user_resetting_form[plainPassword][first]'] = $first;
+        $form['fos_user_resetting_form[plainPassword][second]'] = $second;
+
+        $this->crawler = $this->client->submit($form);
     }
 }

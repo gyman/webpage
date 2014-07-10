@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="gyman" default="prepare">
-
     <property name="php_bin" value="php" />
     <property name="capifony_bin" value="cap" />
     <property name="symfony_console" value="app/console" />
+    <property name="default_language" value="pl" />
     
     <target name="phpmd" description="php mess detector">
         <exec command="bin/phpmd src/ text app/phpmd.xml" checkreturn="true" passthru="true" />
@@ -16,6 +16,28 @@
 
     <target name="phpcbf" description="php code beautifier and fixer">
         <exec command="bin/phpcbf -p --encoding=utf8 --standard=app/phpcs.xml src/" checkreturn="true" passthru="true" />
+    </target>
+
+    <target name="find-translations" description="looks for translations and adds them to translation files">
+        <if>
+            <not>
+                <isset property="lang" />
+            </not>
+            <then>
+                <echo>Setting to default language (${default_language})</echo>
+                <property name="lang" value="${default_language}" />
+            </then>
+        </if>
+        <foreach param="bundle" absparam="absname" target="trans-bundle">
+            <fileset dir="src/Dende">
+                <type type="dir" />
+                <depth max="0" min="0" />
+            </fileset>
+        </foreach>
+    </target>
+    
+    <target name="trans-bundle">
+        <exec command="${php_bin} ${symfony_console} translation:update --force --no-interaction ${lang} ${bundle}" checkreturn="true" passthru="true" />
     </target>
 
     <target name="test-phplint" description="linting phpfiles">

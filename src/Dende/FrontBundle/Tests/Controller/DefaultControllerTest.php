@@ -27,52 +27,6 @@ class DefaultControllerTest extends BaseTest
         $this->assertPageResponseCode(200);
     }
 
-    public function testLogin()
-    {
-        $this->clientIsSettedUp();
-        $this->fixturesAreLoaded();
-
-        $this->getPage("/login");
-        $this->assertPageResponseCode(200);
-
-        $this->loginFormWasSubmitted('uirapuru', '1234');
-        $this->assertPageContainsText("Bad credentials");
-
-        $this->loginFormWasSubmitted('uirapuru123', '1234');
-        $this->assertPageContainsText("Bad credentials");
-
-        $this->loginFormWasSubmitted('uirapuru', '123');
-        $this->assertPageResponseCode(200);
-    }
-
-    public function testRegister()
-    {
-        $this->clientIsSettedUp();
-        $this->fixturesAreLoaded();
-
-        $this->getPage("/register/monthly");
-        $this->assertPageResponseCode(200);
-
-        $this->registerFormWasSubmitted('uirapuru345', '123', '123', 'uirapuru345@tlen.pl');
-        $this->assertPageResponseCode(200);
-        $this->assertPageContainsText('account.title.caption');
-    }
-
-    /**
-     * @dataProvider testRegisterDataProvider
-     */
-    public function testRegisterErrors($username, $password1, $password2, $email, $notice)
-    {
-        $this->clientIsSettedUp();
-        $this->fixturesAreLoaded();
-
-        $this->getPage("/register/monthly");
-        $this->assertPageResponseCode(200);
-
-        $this->registerFormWasSubmitted($username, $password1, $password2, $email);
-        $this->assertPageContainsText($notice);
-    }
-
     /**
      * @dataProvider testContactDataProvider
      */
@@ -84,7 +38,7 @@ class DefaultControllerTest extends BaseTest
         $this->thenIseeNotice($notice);
         $this->thenMessageBeenSent($address, $count);
     }
-    
+
 // <editor-fold defaultstate="collapsed" desc="dataProviders">
 
     public function testContactDataProvider()
@@ -129,39 +83,13 @@ class DefaultControllerTest extends BaseTest
         );
     }
 
-    public function testRegisterDataProvider()
-    {
-        return array(
-            array(
-                "username"  => 'uirapuru',
-                'password1' => '123',
-                'password2' => '123',
-                'email'     => 'uirapuru123@tlen.pl',
-                'notice'    => 'user.username_exists'
-            ),
-            array(
-                "username"  => 'uirapuru123',
-                'password1' => '123',
-                'password2' => '123',
-                'email'     => 'uirapuru@tlen.pl',
-                'notice'    => 'user.email_exists'
-            ),
-            array(
-                "username"  => 'uirapuru123',
-                'password1' => '123',
-                'password2' => '1234',
-                'email'     => 'uirapuru123@tlen.pl',
-                'notice'    => 'fos_user.password.mismatch'
-            ),
-        );
-    }// </editor-fold>
-
+    // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="assertions">
 
     private function thenMessageBeenSent($address, $count)
     {
         $this->mailCollector = $this->client->getProfile()->getCollector('swiftmailer');
-        
+
         $this->assertEquals($count, $this->mailCollector->getMessageCount());
 
         if ($count == 1) {
@@ -193,16 +121,5 @@ class DefaultControllerTest extends BaseTest
 
         $this->crawler = $this->client->submit($form);
     }
-
-    private function registerFormWasSubmitted($username, $password1, $password2, $email)
-    {
-        $form = $this->crawler->filter('button:contains("account.register.label.submit")')->form();
-
-        $form['dende_registration_form[username]'] = $username;
-        $form['dende_registration_form[plainPassword][first]'] = $password1;
-        $form['dende_registration_form[plainPassword][second]'] = $password2;
-        $form['dende_registration_form[email]'] = $email;
-
-        $this->crawler = $this->client->submit($form);
-    }// </editor-fold>
+// </editor-fold>
 }

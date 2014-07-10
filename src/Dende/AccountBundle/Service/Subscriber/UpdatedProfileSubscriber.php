@@ -58,10 +58,11 @@ class UpdatedProfileSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            FOSUserEvents::PROFILE_EDIT_COMPLETED => 'onProfileEditCompleted',
-            FOSUserEvents::PROFILE_EDIT_SUCCESS   => 'onProfileEditSuccess',
-            FOSUserEvents::CHANGE_PASSWORD_COMPLETED => 'onResettingCompleted',
-            FOSUserEvents::CHANGE_PASSWORD_SUCCESS => 'onResettingSuccess',
+            FOSUserEvents::PROFILE_EDIT_COMPLETED  => 'onProfileEditCompleted',
+            FOSUserEvents::PROFILE_EDIT_SUCCESS    => 'onProfileEditSuccess',
+//            FOSUserEvents::CHANGE_PASSWORD_COMPLETED => 'onResettingCompleted',
+//            FOSUserEvents::CHANGE_PASSWORD_SUCCESS => 'onRessetingSuccess',
+            FOSUserEvents::RESETTING_RESET_SUCCESS => 'onRessetingSuccess',
         );
     }
 
@@ -78,28 +79,28 @@ class UpdatedProfileSubscriber implements EventSubscriberInterface
         $this->redirectToDashboard($event);
     }
 
-    public function onRessetingSuccess(FilterUserResponseEvent $event)
+    public function onRessetingSuccess(FormEvent $event)
     {
-        $this->redirectToDashboard($event);
-    }
-    public function onRessetingCompleted(FilterUserResponseEvent $event)
-    {
-        $this->redirectToDashboard($event);
         $this->setFlash(
             'notice',
             'user.notice.password_resetted_succesfuly'
         );
+        $this->redirectToDashboard($event);
     }
-    
+
     private function redirectToDashboard($event)
     {
         $url = $this->router->generate('profile_dashboard');
-        $event->getResponse()->setTargetUrl($url);
+
+        if ($event instanceof FilterUserResponseEvent) {
+            $event->getResponse()->setTargetUrl($url);
+        } elseif ($event instanceof FormEvent) {
+            $event->setResponse(new RedirectResponse($url));
+        }
     }
-    
+
     private function setFlash($type, $message)
     {
         $this->session->getFlashBag()->add($type, $message);
     }
-    
 }
