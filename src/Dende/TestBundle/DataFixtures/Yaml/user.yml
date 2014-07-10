@@ -2,7 +2,7 @@ user-uirapuru:
     firstname:      Grzegorz
     lastname:       Kaszuba
     username:       uirapuru
-    email:          uirapuru@tlen.pl
+    email:          uirapuruadg+gymanUirapuru@gmail.com
     plainPassword:  123
     roles:          [ROLE_ADMIN]
     enabled:        true

@@ -23,8 +23,8 @@ fos_user:
 #            from_email: # Use this node only if you don't want the global email address for the confirmation email
 #                address:        ...
 #                sender_name:    ...
-            enabled:    false # change to true for required email confirmation
-            template:   FOSUserBundle:Registration:email.txt.twig
+            enabled:    false
+            template:   MailerBundle:Templates:registerConfirmation.html.twig
         form:
             type:               dende_user_registration
             name:               dende_registration_form
@@ -32,16 +32,13 @@ fos_user:
     resetting:
         token_ttl: 86400
         email:
-#            from_email: # Use this node only if you don't want the global email address for the resetting email
-#                address:        admin@gyman.pl
-#                sender_name:    Administrator GyMan.pl
-            template:   FOSUserBundle:Resetting:email.txt.twig
+            template:   MailerBundle:Templates:resetting.html.twig
         form:
             type:               fos_user_resetting
             name:               fos_user_resetting_form
             validation_groups:  [ResetPassword, Default]
     service:
-        mailer:                 fos_user.mailer.default
+        mailer:                 fos_user.mailer.twig_swift
         email_canonicalizer:    fos_user.util.canonicalizer.default
         username_canonicalizer: fos_user.util.canonicalizer.default
         token_generator:        fos_user.util.token_generator.default

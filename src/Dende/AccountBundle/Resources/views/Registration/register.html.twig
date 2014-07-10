@@ -1,3 +1,6 @@
+{% extends "AccountBundle::loginLayout.html.twig" %}
+
+{% block body %}
 <form class="form-content register-form" action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
     <h3 class="title">{{ "account.register.header_link_register"|trans }}
         <small>{{ "account.register.header_or"|trans }}
@@ -11,6 +14,7 @@
     <div class="alert alert-danger fade in ">
         <i class="fa fa-envelope alert-icon"></i>
         <button data-dismiss="alert" class="close" type="button">×</button>
+        {# todo: translate caption and errors #}
         <strong>Wystąpiły błędy!</strong>
         <ul>
             {% for error in form.vars.errors %}
@@ -39,3 +43,4 @@
     
     {{ form_rest(form) }}
 </form>
+{% endblock body %}

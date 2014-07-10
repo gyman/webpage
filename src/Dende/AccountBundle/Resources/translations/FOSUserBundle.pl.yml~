@@ -1,0 +1,6 @@
+user.profile.notice.success: __user.profile.notice.success
+resetting.check_email: __resetting.check_email
+resetting.email.subject: __resetting.email.subject
+resetting.email.message: __resetting.email.message
+account.login.there_were_errors: __account.login.there_were_errors
+resetting.password_already_requested: __resetting.password_already_requested

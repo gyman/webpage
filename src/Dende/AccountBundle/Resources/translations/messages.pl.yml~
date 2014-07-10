@@ -39,4 +39,59 @@ orders.table.headers.status: Status
 orders.table.headers.actions: Akcje
 orders.table.actions.reorder: Przedłuż
 orders.table.actions.invoice: Faktura
-orders.table.footer.total_elements: "w sumie: count elementów"
+orders.table.footer.total_elements: 'w sumie: count elementów'
+user.form.password: 'Nowe hasło'
+user.form.password_confirmation: 'Powtórz nowe hasło'
+user.profile.notice.success: 'Wszystko w porządku!'
+user.notice.profile_registered_succesfuly: 'Rejestracja się powiodła!'
+account.login.password_recovery: 'Przypomnij hasło'
+account.reset.header: 'Przypominanie hasła'
+account.reset.caption: 'Jeżeli nie pamiętasz swojego hasła, żaden problem! Mamy nadzieję, że pamiętasz choć nazwę swojego użytkownika lub adres email, na który zostało założone konto ;)'
+'Bad credentials': 'Nieprawidłowa nazwa użytkownika lub hasło'
+group.edit.submit: 'Edytuj grupę'
+group.show.name: 'Nazwa grupy'
+group.new.submit: 'Utwórz grupę'
+group.flash.updated: 'Grupa została zaktualizowana'
+group.flash.created: 'Grupa została utworzona'
+group.flash.deleted: 'Grupa została usunięta'
+security.login.username: 'Nazwa użytkownika:'
+security.login.password: 'Hasło:'
+security.login.remember_me: 'Nie wylogowuj mnie'
+security.login.submit: Zaloguj
+profile.show.username: 'Nazwa użytkownika'
+profile.show.email: E-mail
+profile.edit.submit: 'Edytuj użytkownika'
+profile.flash.updated: 'Zapisano zmiany w profilu'
+change_password.submit: 'Zmień hasło'
+change_password.flash.success: 'Hasło zostało zmienione'
+registration.check_email: 'Na adres %email% wysłano wiadomość e-mail. Zawiera ona link, na który należy kliknąć, aby aktywować konto.'
+registration.confirmed: 'Gratulacje %username%, potwierdziłeś konto.'
+registration.submit: Zarejestruj
+registration.flash.user_created: 'Stworzono użytkownika'
+registration.email.subject: 'Witaj %username%!'
+registration.email.message: "Cześć %username%!\n\nAby potwierdzić swoje konto - proszę przejść do %confirmationUrl%\n\nPozdrawiamy,\nZespół.\n"
+resetting.password_already_requested: 'W przeciągu ostatnich 24 godzin nastąpiła już próba odzyskania hasła.'
+resetting.check_email: 'Na adres %email% wysłano wiadomość e-mail. Zawiera ona link w którego należy kliknąć aby zresetować hasło.'
+resetting.request.invalid_username: 'Nazwa użytkownika lub e-mail "%username%" nie istnieje.'
+resetting.request.username: 'Nazwa użytkownika lub e-mail:'
+resetting.request.submit: 'Resetuj hasło'
+resetting.reset.submit: 'Zmień hasło'
+resetting.flash.success: 'Hasło zostało zresetowane'
+resetting.email.subject: 'Witaj %username%!'
+resetting.email.message: "Cześć %username%!\n\nAby zresetować hasło - proszę przejść do %confirmationUrl%\n\nPozdrawiamy,\nZespół.\n"
+layout.logout: Wyloguj
+layout.login: Zaloguj
+layout.register: Zarejestruj
+layout.logged_in_as: 'Zalogowano jako %username%'
+form.group_name: 'Nazwa grupy:'
+form.username: 'Nazwa użytkownika:'
+form.email: 'E-mail:'
+form.current_password: 'Obecne hasło:'
+form.password: 'Hasło:'
+form.password_confirmation: 'Powtórz hasło:'
+form.new_password: 'Nowe hasło:'
+form.new_password_confirmation: 'Powtórz hasło:'
+user.profile.there_were_errors: 'Wystąpiły błędy'
+account.login.there_were_errors: 'Wystąpiły błędy'
+account.reset.enter_new: 'Podaj nowe'
+account.reset.required_info: 'pole jest wymagane'

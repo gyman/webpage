@@ -35,44 +35,43 @@ frontpage.what_offers.homepage.title: 'Własna strona'
 frontpage.what_offers.homepage.description: 'Możesz w naszej domenie założyć wizytówkę, na której będziesz mógł zaprezentować swoje podstawowe dane, informacje o zajęciach, grafik, jak dojechać itd.'
 frontpage.what_offers.calendar.title: Kalendarz
 frontpage.what_offers.calendar.description: 'Używasz kalendarza google? Możesz się z nim wpełni synchronizować.'
-
 download.caption.download: Pobierz
 download.caption.you_can_download: 'Pobierz GyMan'
 download.paragraph.you_can_download: 'Możesz pobrać aplikację na własny komputer i używać jej tam. Wszystkie dane są Twoje i nikt inny nie ma do nich wglądu. Musisz jednak pamiętać, że instalacja nie jest łatwa. Niedługo znajdzie się tu instrukcja wykonania jej krok po kroku.'
 download.button.get_from_github: 'Pobierz kod z GitHub'
 download.button.go_to_github: 'Kliknij, aby przejść do GitHub'
-
 pricing.page_title: 'Załóż konto - wybierz swój plan'
 pricing.caption.register_account: 'Wybierz rodzaj konta'
 pricing.plan.free.caption: Darmowy
 pricing.plan.monthly.caption: Miesięczny
 pricing.plan.yearly.caption: Roczny
 pricing.plan.self-hosted.caption: Pobierz
-pricing.download.install.caption: Zainstaluj sam
-pricing.download.no-install.caption: Gotowy do działania
-
-menu.label.description: "Opis"
-menu.label.blog : "Blog"
-menu.label.compare: "Porównaj"
-menu.label.demo_app: "Zobacz demo"
-menu.label.download: "Pobierz"
-menu.label.pricing: "Załóż konto"
-menu.label.contact: "Kontakt"
-menu.label.login: "Zaloguj się"
-menu.label.logout: "Wyloguj się"
+pricing.download.install.caption: 'Zainstaluj sam'
+pricing.download.no-install.caption: 'Gotowy do działania'
+menu.label.description: Opis
+menu.label.blog: Blog
+menu.label.compare: Porównaj
+menu.label.demo_app: 'Zobacz demo'
+menu.label.download: Pobierz
+menu.label.pricing: 'Załóż konto'
+menu.label.contact: Kontakt
+menu.label.login: 'Zaloguj się'
+menu.label.logout: 'Wyloguj się'
 menu.label.your_account: 'Twoje konto'
-
 contact.thank_you_message: 'Dziękujemy! Twoja wiadomość zostanie zaraz przeczytana i odpiszemy tak szybko jak się nam uda :)'
-contact.captions.contact_us: "Napisz do nas"
-contact.captions.use_the_form: "Skorzystaj z formularza po prawej i napisz do nas wiadomość"
-contact.form.header: "Napisz wiadomość"
-contact.form.labels.email: "Adres email"
-contact.form.labels.message: "Wiadomość"
-contact.form.labels.submit: "Wyślij"
-contact.form.required_field: "pole wymagane"
-
+contact.captions.contact_us: 'Napisz do nas'
+contact.captions.use_the_form: 'Skorzystaj z formularza po prawej i napisz do nas wiadomość'
+contact.form.header: 'Napisz wiadomość'
+contact.form.labels.email: 'Adres email'
+contact.form.labels.message: Wiadomość
+contact.form.labels.submit: Wyślij
+contact.form.required_field: 'pole wymagane'
 user.form.label.firstname: Imię
 user.form.label.lastname: Nazwisko
-user.form.username: Nazwa użytkownika
-user.form.email: Adres email
-user.form.current_password: Aktualne hasło
+user.form.username: 'Nazwa użytkownika'
+user.form.email: 'Adres email'
+user.form.current_password: 'Aktualne hasło'
+compare.page.title: __compare.page.title
+common.successful: __common.successful
+common.there_were_errors: __common.there_were_errors
+index.page.title: __index.page.title

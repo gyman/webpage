@@ -58,22 +58,48 @@ class UpdatedProfileSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            FOSUserEvents::PROFILE_EDIT_COMPLETED => 'onRegistrationCompleted',
-            FOSUserEvents::PROFILE_EDIT_SUCCESS   => 'onRegistrationSuccess',
+            FOSUserEvents::PROFILE_EDIT_COMPLETED => 'onProfileEditCompleted',
+            FOSUserEvents::PROFILE_EDIT_SUCCESS   => 'onProfileEditSuccess',
+            FOSUserEvents::CHANGE_PASSWORD_COMPLETED => 'onResettingCompleted',
+            FOSUserEvents::CHANGE_PASSWORD_SUCCESS => 'onResettingSuccess',
         );
     }
 
-    public function onRegistrationSuccess(FormEvent $event)
+    public function onProfileEditSuccess(FormEvent $event)
     {
-        $this->session->getFlashBag()->add(
+        $this->setFlash(
             'notice',
             'user.notice.profile_updated_succesfuly'
         );
     }
 
-    public function onRegistrationCompleted(FilterUserResponseEvent $event)
+    public function onProfileEditCompleted(FilterUserResponseEvent $event)
+    {
+        $this->redirectToDashboard($event);
+    }
+
+    public function onRessetingSuccess(FilterUserResponseEvent $event)
+    {
+        $this->redirectToDashboard($event);
+    }
+    public function onRessetingCompleted(FilterUserResponseEvent $event)
+    {
+        $this->redirectToDashboard($event);
+        $this->setFlash(
+            'notice',
+            'user.notice.password_resetted_succesfuly'
+        );
+    }
+    
+    private function redirectToDashboard($event)
     {
         $url = $this->router->generate('profile_dashboard');
         $event->getResponse()->setTargetUrl($url);
     }
+    
+    private function setFlash($type, $message)
+    {
+        $this->session->getFlashBag()->add($type, $message);
+    }
+    
 }
