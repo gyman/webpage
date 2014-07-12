@@ -95,5 +95,13 @@ user.profile.there_were_errors: 'Wystąpiły błędy'
 account.login.there_were_errors: 'Wystąpiły błędy'
 account.reset.enter_new: 'Podaj nowe hasło (i postaraj się je zapamiętać ;))'
 account.reset.required_info: 'pole jest wymagane'
-user.form.new_password: Nowe hasło
-user.form.new_password_confirmation: Powtórz nowe hasło
+user.form.new_password: 'Nowe hasło'
+user.form.new_password_confirmation: 'Powtórz nowe hasło'
+user.notice.profile_updated_succesfuly: "Profil został zaktualizowany"
+
+user.user.form.invoice.companyName: "Nazwa firmy"
+user.user.form.invoice.nip: "NIP"
+user.user.form.invoice.street: "Ulica"
+user.user.form.invoice.zipcode: "Kod pocztowy"
+user.user.form.invoice.city: "Miasto"
+user.user.form.invoice.country: "Kraj"

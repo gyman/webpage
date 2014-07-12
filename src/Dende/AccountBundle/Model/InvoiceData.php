@@ -11,19 +11,19 @@ class InvoiceData
 {
 
     /**
-     * @Assert\NotBlank(message = "invoiceData.field_cannot_be_empty")
+     * Assert\NotBlank(message = "invoiceData.field_cannot_be_empty")
      * @var string $companyName
      */
     protected $companyName;
 
     /**
-     * @Assert\NotBlank(message = "invoiceData.field_cannot_be_empty")
+     * Assert\NotBlank(message = "invoiceData.field_cannot_be_empty")
      * @var string $nip
      */
     protected $nip;
 
     /**
-     * @Assert\NotBlank(message = "invoiceData.field_cannot_be_empty")
+     * Assert\NotBlank(message = "invoiceData.field_cannot_be_empty")
      * @var string $street
      */
     protected $street;
@@ -40,13 +40,13 @@ class InvoiceData
     protected $zipcode;
 
     /**
-     * @Assert\NotBlank(message = "invoiceData.field_cannot_be_empty")
+     * Assert\NotBlank(message = "invoiceData.field_cannot_be_empty")
      * @var string $city
      */
     protected $city;
 
     /**
-     * @Assert\NotBlank(message = "invoiceData.field_cannot_be_empty")
+     * Assert\NotBlank(message = "invoiceData.field_cannot_be_empty")
      * @var string $country
      */
     protected $country;

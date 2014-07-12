@@ -93,5 +93,7 @@ form.new_password: 'Nowe hasło:'
 form.new_password_confirmation: 'Powtórz hasło:'
 user.profile.there_were_errors: 'Wystąpiły błędy'
 account.login.there_were_errors: 'Wystąpiły błędy'
-account.reset.enter_new: 'Podaj nowe'
+account.reset.enter_new: 'Podaj nowe hasło (i postaraj się je zapamiętać ;))'
 account.reset.required_info: 'pole jest wymagane'
+user.form.new_password: Nowe hasło
+user.form.new_password_confirmation: Powtórz nowe hasło

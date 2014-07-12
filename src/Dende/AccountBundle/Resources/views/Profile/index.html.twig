@@ -53,6 +53,23 @@
             </div>
         {% endif %}
 
+        {% if form.invoiceData.vars.errors|length %}
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="alert alert-danger fade in ">
+                        <i class="fa fa-envelope alert-icon"></i>
+                        <button data-dismiss="alert" class="close" type="button">×</button>
+                        <strong>{{ "user.profile.there_were_errors"|trans }}</strong>
+                        <ul>
+                            {% for error in form.invoiceData.vars.errors %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
         <div class="row">
             <div class="col-sm-6 col-md-6">
                 <div class="title-box">
@@ -64,10 +81,6 @@
                         {{ _self.inputWidget(input) }}
                     {% endfor %}
                 </ul>
-
-            </div>
-
-            <div class="col-sm-6 col-md-6">
                 <div class="title-box">
                     <h2 class="title">{{ "profile.dashboard.caption.password"|trans }}</h2>
                 </div>
@@ -77,24 +90,31 @@
                         {{ _self.inputWidget(input,{"required" : "off"}) }}
                     {% endfor %}
                 </ul>
+
+            </div>
+
+            <div class="col-sm-6 col-md-6">
+                <div class="title-box">
+                    <h2 class="title">Dane do faktury</h2>
+                </div>
+
+                <ul class="list-unstyled">
+                    {% for input in [
+                        form.invoiceData.companyName, form.invoiceData.nip, 
+                        form.invoiceData.street, form.invoiceData.zipcode, 
+                        form.invoiceData.city, form.invoiceData.country, 
+                    ] %}
+                        {{ _self.inputWidget(input) }}
+                    {% endfor %}
+                </ul>
             </div>
         </div>
-        {#
+
 <div class="row">
     <div class="col-sm-6 col-md-6">
-        <div class="title-box">
-            <h2 class="title">Dane do faktury</h2>
-        </div>
-
-        <ul class="list-unstyled">
-            {% for input in [form.invoice.company, form.invoice.nip] %}
-                {{ _self.inputWidget(input) }}
-            {% endfor %}
-        </ul>
 
     </div>
 </div>
-        #}
         <div class="buttons-box clearfix">
             <button class="btn btn-default">{{ "profile.dashboard.form.label.button_save"|trans }}</button>
             <span class="required"><b>*</b> {{ "profile.dashboard.form.required"|trans }}</span>

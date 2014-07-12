@@ -7,5 +7,6 @@ mailing.registeredSuccess.para04: 'W razie problemów zawsze możesz skorzystać
 mailing.registeredSuccess.username: 'nazwa użytkownika'
 mailing.registeredSuccess.password: hasło
 mailing.registeredSuccess.link: 'przypominanie hasła'
-resetting.email.message: __resetting.email.message
-resetting.email.subject: __resetting.email.subject
+resetting.email.subject: 'Witaj %username%!'
+resetting.email.message: "Cześć %username%!\n\nAby zresetować hasło - proszę przejść do %confirmationUrl%\n\nPozdrawiamy,\nZespół.\n"
+user.notice.password_resetted_succesfuly: "Twoje hasło zostało zmienione! :)"

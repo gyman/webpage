@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use FOS\UserBundle\Form\Type\ProfileFormType as BaseType;
+use Dende\AccountBundle\Form\Type\InvoiceDataType;
 
 class UserType extends BaseType
 {
@@ -37,6 +38,8 @@ class UserType extends BaseType
         $builder->remove('current_password');
         $builder->get("username")->setDisabled(true);
         $builder->get("email")->setDisabled(true);
+        
+        $builder->add('invoiceData', new InvoiceDataType());
     }
 
     public function __construct($class)
@@ -51,6 +54,7 @@ class UserType extends BaseType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
+            'cascade_validation'=> true,
             'data_class' => $this->class,
             'error_bubbling' => true
         ));

@@ -5,4 +5,11 @@ user-uirapuru:
     email:          uirapuruadg+gymanUirapuru@gmail.com
     plainPassword:  123
     roles:          [ROLE_ADMIN]
+    invoiceData:
+        companyName:    Dende Grzegorz Kaszuba
+        nip:            5862112254
+        street:         Władysława IV 7-15B m.32
+        zipcode:        81-356
+        city:           Gdynia
+        country:        poland
     enabled:        true

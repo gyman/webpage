@@ -9,4 +9,4 @@ mailing.registeredSuccess.password: hasło
 mailing.registeredSuccess.link: 'przypominanie hasła'
 resetting.email.subject: 'Witaj %username%!'
 resetting.email.message: "Cześć %username%!\n\nAby zresetować hasło - proszę przejść do %confirmationUrl%\n\nPozdrawiamy,\nZespół.\n"
-user.notice.password_resetted_succesfuly: "Twoje hasło zostało zmienione! :)"
+user.notice.password_resetted_succesfuly: 'Twoje hasło zostało zmienione! :)'
