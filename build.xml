@@ -12,7 +12,7 @@
     </target>
     
     <target name="phploc" description="php lines of code">
-        <exec command="phploc --log-csv ${basedir}/build/logs/phploc.csv ${basedir}/src" checkreturn="true" passthru="true" />
+        <exec command="phploc --log-csv build/logs/phploc.csv src/" checkreturn="true" passthru="true" />
     </target>
     
     <target name="pdepend" description="Calculate software metrics using PHP_Depend">
