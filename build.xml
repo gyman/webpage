@@ -16,7 +16,7 @@
     </target>
     
     <target name="pdepend" description="Calculate software metrics using PHP_Depend">
-        <exec command="pdepend --jdepend-xml=build/logs/jdepend.xml --jdepend-chart=build/pdepend/dependencies.svg --overview-pyramid=build/pdepend/overview-pyramid.svg src/" checkreturn="true" passthru="true" />
+        <exec command="pdepend --jdepend-xml=build/jdepend.xml --jdepend-chart=build/dependencies.svg --overview-pyramid=build/overview-pyramid.svg src/" checkreturn="true" passthru="true" />
     </target>
 
     <target name="phpcs" description="php code sniffer">
