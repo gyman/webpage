@@ -124,9 +124,14 @@
     <target name="test">
         <phingcall target="test-phplint" />
         <phingcall target="test-twiglint" />
-        <phingcall target="phpcs" />
-        <!-- phingcall target="phpmd" / -->
         <phingcall target="test-phpunit" />
+    </target>
+    
+    <target name="measure">
+        <phingcall target="phpcs" />
+        <!--<phingcall target="phpmd" />-->
+        <phingcall target="phploc" />
+        <phingcall target="pdepend" />
     </target>
 
     <target name="prepare">
