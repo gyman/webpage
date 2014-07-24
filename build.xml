@@ -5,9 +5,18 @@
     <property name="capifony_bin" value="cap" />
     <property name="symfony_console" value="app/console" />
     <property name="default_language" value="pl" />
+    <property name="basedir" value="${project.basedir}" />
     
     <target name="phpmd" description="php mess detector">
         <exec command="bin/phpmd src/ text app/phpmd.xml" checkreturn="true" passthru="true" />
+    </target>
+    
+    <target name="phploc" description="php lines of code">
+        <exec command="phploc --log-csv ${basedir}/build/logs/phploc.csv ${basedir}/src" checkreturn="true" passthru="true" />
+    </target>
+    
+    <target name="pdepend" description="Calculate software metrics using PHP_Depend">
+        <exec command="pdepend --jdepend-xml=${basedir}/build/logs/jdepend.xml --jdepend-chart=${basedir}/build/pdepend/dependencies.svg --overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg ${basedir}/src/" checkreturn="true" passthru="true" />
     </target>
 
     <target name="phpcs" description="php code sniffer">
